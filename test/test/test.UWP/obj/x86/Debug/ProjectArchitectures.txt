@@ -1,0 +1,1 @@
+C:\Users\Cormac\Desktop\Xamarin\test\test\test.UWP\test.UWP.csproj;x86

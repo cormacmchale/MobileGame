@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:test"
+             xmlns:graphics="clr-namespace:Android.Graphics;assembly=Mono.Android"
+             x:Class="test.MainPage">
+    
+    <StackLayout x:Name="MainStack">
+        
+        <Grid x:Name="Main" BackgroundColor="Black" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" WidthRequest="500" HeightRequest="500">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="6*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+        
+        <Entry x:Name="changeNum"  Grid.Row="1"  Text="I am an Entry" VerticalOptions="CenterAndExpand" BackgroundColor="AntiqueWhite"/>
+        <Button Text="Press Me" Grid.Row="2" Clicked="Button_Clicked" HorizontalOptions="CenterAndExpand"/>
+    </Grid>
+    </StackLayout>
+</ContentPage>
