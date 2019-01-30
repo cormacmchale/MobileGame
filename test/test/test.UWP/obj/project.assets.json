@@ -7494,11 +7494,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Cormac\\Desktop\\Xamarin\\test\\test\\test.UWP\\test.UWP.csproj",
+      "projectUniqueName": "C:\\Users\\Cormac\\Desktop\\MobileGame\\test\\test\\test.UWP\\test.UWP.csproj",
       "projectName": "test.UWP",
-      "projectPath": "C:\\Users\\Cormac\\Desktop\\Xamarin\\test\\test\\test.UWP\\test.UWP.csproj",
+      "projectPath": "C:\\Users\\Cormac\\Desktop\\MobileGame\\test\\test\\test.UWP\\test.UWP.csproj",
       "packagesPath": "C:\\Users\\Cormac\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Cormac\\Desktop\\Xamarin\\test\\test\\test.UWP\\obj\\",
+      "outputPath": "C:\\Users\\Cormac\\Desktop\\MobileGame\\test\\test\\test.UWP\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "fallbackFolders": [
@@ -7518,8 +7518,8 @@
       "frameworks": {
         "uap10.0.16299": {
           "projectReferences": {
-            "C:\\Users\\Cormac\\Desktop\\Xamarin\\test\\test\\test\\test.csproj": {
-              "projectPath": "C:\\Users\\Cormac\\Desktop\\Xamarin\\test\\test\\test\\test.csproj"
+            "C:\\Users\\Cormac\\Desktop\\MobileGame\\test\\test\\test\\test.csproj": {
+              "projectPath": "C:\\Users\\Cormac\\Desktop\\MobileGame\\test\\test\\test\\test.csproj"
             }
           }
         }

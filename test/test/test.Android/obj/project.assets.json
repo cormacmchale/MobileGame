@@ -792,11 +792,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Cormac\\Desktop\\Xamarin\\test\\test\\test.Android\\test.Android.csproj",
+      "projectUniqueName": "C:\\Users\\Cormac\\Desktop\\MobileGame\\test\\test\\test.Android\\test.Android.csproj",
       "projectName": "test.Android",
-      "projectPath": "C:\\Users\\Cormac\\Desktop\\Xamarin\\test\\test\\test.Android\\test.Android.csproj",
+      "projectPath": "C:\\Users\\Cormac\\Desktop\\MobileGame\\test\\test\\test.Android\\test.Android.csproj",
       "packagesPath": "C:\\Users\\Cormac\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Cormac\\Desktop\\Xamarin\\test\\test\\test.Android\\obj\\",
+      "outputPath": "C:\\Users\\Cormac\\Desktop\\MobileGame\\test\\test\\test.Android\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "configFilePaths": [
@@ -813,8 +813,8 @@
       "frameworks": {
         "monoandroid80": {
           "projectReferences": {
-            "C:\\Users\\Cormac\\Desktop\\Xamarin\\test\\test\\test\\test.csproj": {
-              "projectPath": "C:\\Users\\Cormac\\Desktop\\Xamarin\\test\\test\\test\\test.csproj"
+            "C:\\Users\\Cormac\\Desktop\\MobileGame\\test\\test\\test\\test.csproj": {
+              "projectPath": "C:\\Users\\Cormac\\Desktop\\MobileGame\\test\\test\\test\\test.csproj"
             }
           }
         }
