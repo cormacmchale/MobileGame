@@ -31,14 +31,13 @@ namespace test
             test++;
             Entry entry = FindByName("changeNum") as Entry;
             entry.Text = test.ToString();
-            t.Start();
-            t.Elapsed += T_Elapsed;
+            run();
         }
 
         private void T_Elapsed(object sender, ElapsedEventArgs e)
         {
             //CoreDispatcher.
-            movingGame(Player);
+            movingGame();
         }
 
         private void Button_Clicked_1(object sender, EventArgs e)
@@ -53,15 +52,31 @@ namespace test
             player.TranslationX+=4;
         }
 
-        private void movingGame(BoxView p)
+        private void movingGame()
         {
             // BoxView player = FindByName("Player") as BoxView;
             Debug.WriteLine("Timer");
             test++;
+            BoxView b = new BoxView();
+            b.HeightRequest = 50;
+            b.WidthRequest = 50;
+            //b.Color = Windows.UI.Colors.Black;
+            //CoreDispatcher.RunAsync(CoreDispatcherPriority.Normal,
+            ///() =>
+                //{
+    // Your UI update code goes here!
+                //});
+
+
             //changeNum.Text = test.ToString();
-            //p.TranslationX += -4;
+            Player.TranslationX += -4;
             //Entry entry = FindByName("changeNum") as Entry;
             //entry.Text = test.ToString();
+        }
+        private async void run()
+        {
+            t.Start();
+            t.Elapsed += T_Elapsed;
         }
     }
 }
