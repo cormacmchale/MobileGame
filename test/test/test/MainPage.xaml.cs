@@ -8,7 +8,8 @@ namespace test
     public partial class MainPage : ContentPage
     {
         static int test;
-        Timer t = new Timer(70);
+        //10 milliseconds is optimal for player movement speed
+        Timer t = new Timer(10);
         static int movement;
 
         //Avoid this object
