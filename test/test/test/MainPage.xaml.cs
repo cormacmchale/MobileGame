@@ -1,15 +1,6 @@
-﻿using Android.Graphics;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Timers;
-using Windows.UI;
-using Windows.UI.Core;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Media;
 using Xamarin.Forms;
 
 namespace test
@@ -19,11 +10,13 @@ namespace test
         
         static int test = 0;
         Timer t = new Timer(1000);
-        //t.Elapsed+= movingGame();
 
         public MainPage()
         {
-            InitializeComponent();      
+            InitializeComponent();
+            t.Elapsed += T_Elapsed1;
+            t.Start();
+
         }
 
         private void Button_Clicked(object sender, EventArgs e)
@@ -31,13 +24,18 @@ namespace test
             test++;
             Entry entry = FindByName("changeNum") as Entry;
             entry.Text = test.ToString();
-            run();
+         
         }
 
-        private void T_Elapsed(object sender, ElapsedEventArgs e)
+        private void T_Elapsed1(object sender, ElapsedEventArgs e)
         {
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                movingGame();
+            }
+                        );
+
             //CoreDispatcher.
-            movingGame();
         }
 
         private void Button_Clicked_1(object sender, EventArgs e)
@@ -52,7 +50,7 @@ namespace test
             player.TranslationX+=4;
         }
 
-        private void movingGame()
+        private  void movingGame()
         {
             // BoxView player = FindByName("Player") as BoxView;
             Debug.WriteLine("Timer");
@@ -63,20 +61,16 @@ namespace test
             //b.Color = Windows.UI.Colors.Black;
             //CoreDispatcher.RunAsync(CoreDispatcherPriority.Normal,
             ///() =>
-                //{
-    // Your UI update code goes here!
-                //});
+            //{
+            // Your UI update code goes here!
+            //});
 
+            
 
             //changeNum.Text = test.ToString();
             Player.TranslationX += -4;
             //Entry entry = FindByName("changeNum") as Entry;
             //entry.Text = test.ToString();
-        }
-        private async void run()
-        {
-            t.Start();
-            t.Elapsed += T_Elapsed;
         }
     }
 }
