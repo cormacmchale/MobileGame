@@ -9,8 +9,10 @@ namespace test
     {
         static int test;
         //10 milliseconds is optimal for player movement speed
-        Timer t = new Timer(10);
-        static int movement;
+        Timer t = new Timer(50);
+        static int movement = 0;
+        static int movementY = 0;
+        static double distance = 0;
 
         //Avoid this object
         BoxView b = new BoxView
@@ -30,9 +32,11 @@ namespace test
 
         private void Button_Clicked(object sender, EventArgs e)
         {
-            t.Stop();
+            //t.Stop();
+            movementY = -2;
             test++;
-            changeNum.Text = test.ToString();     
+            changeNum.Text = test.ToString();  
+            
         }
 
         private void B_SizeChanged(object sender, EventArgs e)
@@ -54,21 +58,32 @@ namespace test
         //change movement
         private void Button_Clicked_1(object sender, EventArgs e)
         {
-            movement = 2;
+            movement = -2;
         }
         //change movement
         private void Button_Clicked_2(object sender, EventArgs e)
         {
-            movement = -2;
+            movement = 2;
         }
         private  void movingGame()
         {
+            distance = Math.Sqrt(((GameObject.TranslationX - Player.TranslationX) * (GameObject.TranslationX - Player.TranslationX)) + ((GameObject.TranslationY - Player.TranslationY) * (GameObject.TranslationY - Player.TranslationY)));
             // BoxView player = FindByName("Player") as BoxView;
-            Debug.WriteLine("Timer");
-            test++;
-            Player.TranslationX += movement;
-            Debug.WriteLine(Player.TranslationX);
+            if (distance<=1)
+            {
+                Debug.WriteLine("Collision");
+            }
+                Debug.WriteLine(distance);
+                test++;
+                Player.TranslationX += movement;
+                Player.TranslationY += movementY;
+                //Debug.WriteLine(Player.TranslationX);
             //b.TranslationX += -2;
+        }
+
+        private void Button_Clicked_3(object sender, EventArgs e)
+        {
+            movementY = 2;
         }
     }
 }

@@ -13,12 +13,15 @@
             <RowDefinition Height="6*"/>
             <RowDefinition Height="2*"/>
             <RowDefinition Height="2*"/>
-        </Grid.RowDefinitions>
-            <BoxView x:Name="Player" Grid.Row="0" Color="Black" HeightRequest="25" WidthRequest="25" HorizontalOptions="Center" VerticalOptions="Center"/>
+            <RowDefinition Height="2*"/>
+            </Grid.RowDefinitions>
+            <BoxView x:Name="Player" Grid.Row="0" Color="Black" AnchorX="10"  AnchorY="10" HeightRequest="25" WidthRequest="25" HorizontalOptions="Center" VerticalOptions="Center"/>
+            <BoxView x:Name="GameObject" Grid.Row="0" Color="Black" HeightRequest="25" WidthRequest="25" HorizontalOptions="Center" VerticalOptions="Center"/>
             <Entry x:Name="changeNum"  Grid.Row="1"  Text="Problem solved" VerticalOptions="CenterAndExpand" BackgroundColor="AntiqueWhite"/>
-        <Button Text="Press Me" Grid.Row="2" Clicked="Button_Clicked" HorizontalOptions="CenterAndExpand"/>
+        <Button Text="Up" Grid.Row="2" Clicked="Button_Clicked" HorizontalOptions="Center"/>
         <Button Text="Left" Grid.Row="2" Clicked="Button_Clicked_1" HorizontalOptions="Start"/>
         <Button Text="Right" Grid.Row="2" Clicked="Button_Clicked_2" HorizontalOptions="End"/>
-    </Grid>
+        <Button Text="Down" Grid.Row="3" Clicked="Button_Clicked_3"/>
+        </Grid>
     </StackLayout>
 </ContentPage>
