@@ -9,23 +9,17 @@ namespace test
     {
         static int test;
         //10 milliseconds is optimal for player movement speed
-        Timer t = new Timer(50);
+        Timer t = new Timer(10);
         static int movement = 0;
         static int movementY = 0;
         static double distance = 0;
 
-        //Avoid this object
-        BoxView b = new BoxView
-        {
-            HeightRequest = 10,
-            WidthRequest = 10,
-            Color = Color.Black,
-        };
         public MainPage()
         {
             InitializeComponent();
             t.Elapsed += T_Elapsed1;
             t.Start();
+            GameObject.TranslationX = -200;
             //b.SetValue(Grid.RowProperty, 0);
             //Main.Children.Add(b);
         }
@@ -35,8 +29,7 @@ namespace test
             //t.Stop();
             movementY = -2;
             test++;
-            changeNum.Text = test.ToString();  
-            
+            changeNum.Text = test.ToString();            
         }
 
         private void B_SizeChanged(object sender, EventArgs e)
@@ -67,9 +60,10 @@ namespace test
         }
         private  void movingGame()
         {
-            distance = Math.Sqrt(((GameObject.TranslationX - Player.TranslationX) * (GameObject.TranslationX - Player.TranslationX)) + ((GameObject.TranslationY - Player.TranslationY) * (GameObject.TranslationY - Player.TranslationY)));
+            distance = Math.Sqrt(((GameObject.TranslationX - Player.TranslationX) * (GameObject.TranslationX - Player.TranslationX)) 
+            + ((GameObject.TranslationY - Player.TranslationY) * (GameObject.TranslationY - Player.TranslationY)));
             // BoxView player = FindByName("Player") as BoxView;
-            if (distance<=1)
+            if (distance<=3)
             {
                 Debug.WriteLine("Collision");
             }
@@ -77,8 +71,9 @@ namespace test
                 test++;
                 Player.TranslationX += movement;
                 Player.TranslationY += movementY;
+                GameObject.TranslationX++;
                 //Debug.WriteLine(Player.TranslationX);
-            //b.TranslationX += -2;
+                //b.TranslationX += -2;
         }
 
         private void Button_Clicked_3(object sender, EventArgs e)
