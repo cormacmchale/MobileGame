@@ -19,7 +19,7 @@ namespace test
             InitializeComponent();
             t.Elapsed += T_Elapsed1;
             t.Start();
-            GameObject.TranslationX = -200;
+            GameObject.TranslationX = -500;
             //b.SetValue(Grid.RowProperty, 0);
             //Main.Children.Add(b);
         }
@@ -66,6 +66,10 @@ namespace test
             if (distance<=3)
             {
                 Debug.WriteLine("Collision");
+            }
+            if (GameObject.TranslationX >= 500)
+            {
+                GameObject.TranslationX = -500;
             }
                 Debug.WriteLine(distance);
                 test++;
