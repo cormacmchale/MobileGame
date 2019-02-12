@@ -10,6 +10,7 @@ namespace test
         static int test;
         //10 milliseconds is optimal for player movement speed
         Timer t = new Timer(10);
+        Timer collisionTimer = new Timer(50);
         static int movement = 0;
         static int movementY = 0;
         static double distance = 0;
@@ -18,6 +19,7 @@ namespace test
         {
             InitializeComponent();
             t.Elapsed += T_Elapsed1;
+            collisionTimer.Elapsed += T_Elapsed2;
             t.Start();
             GameObject.TranslationX = -500;
             //b.SetValue(Grid.RowProperty, 0);
@@ -48,6 +50,29 @@ namespace test
             );
             //CoreDispatcher.
         }
+        private void T_Elapsed2(object sender, ElapsedEventArgs e)
+        {
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                //move the pieces
+                collisionDetection();
+                //detect collisions
+            }
+            );
+            //CoreDispatcher.
+        }
+
+        private void collisionDetection()
+        {
+            distance = Math.Sqrt(((GameObject.TranslationX - Player.TranslationX) * (GameObject.TranslationX - Player.TranslationX))
+            + ((GameObject.TranslationY - Player.TranslationY) * (GameObject.TranslationY - Player.TranslationY)));
+            // BoxView player = FindByName("Player") as BoxView;
+            if (distance <= 3)
+            {
+                Debug.WriteLine("Collision");
+            }
+        }
+
         //change movement
         private void Button_Clicked_1(object sender, EventArgs e)
         {
@@ -60,13 +85,6 @@ namespace test
         }
         private  void movingGame()
         {
-            distance = Math.Sqrt(((GameObject.TranslationX - Player.TranslationX) * (GameObject.TranslationX - Player.TranslationX)) 
-            + ((GameObject.TranslationY - Player.TranslationY) * (GameObject.TranslationY - Player.TranslationY)));
-            // BoxView player = FindByName("Player") as BoxView;
-            if (distance<=3)
-            {
-                Debug.WriteLine("Collision");
-            }
             if (GameObject.TranslationX >= 500)
             {
                 GameObject.TranslationX = -500;
