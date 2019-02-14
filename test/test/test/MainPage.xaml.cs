@@ -14,22 +14,29 @@ namespace test
         static int movementX = 0;
         static int movementY = 0;
         static double distance = 0;
+        Imager getImage = new Imager();
 
         public MainPage()
         {
             InitializeComponent();
             InitilizeGame();
-
         }
 
         private void InitilizeGame()
         {
+            //add image to game
+            Image test = new Image();
+            test = getImage.AddImage();
+            test.HeightRequest = 50;
+            test.WidthRequest = 50;
+            test.SetValue(Grid.RowProperty, 1);
+            test.SetValue(Grid.ColumnProperty, 1);
+            Main.Children.Add(test);
             //set up game
             t.Elapsed += T_Elapsed1;
             collisionTimer.Elapsed += T_Elapsed2;
             t.Start();
-            collisionTimer.Start();
-            GameObject.TranslationX = -500;
+            collisionTimer.Start();       
         }
 
         private void T_Elapsed1(object sender, ElapsedEventArgs e)
@@ -59,7 +66,7 @@ namespace test
         {
             distance = Math.Sqrt(((GameObject.TranslationX - Player.TranslationX) * (GameObject.TranslationX - Player.TranslationX))
             + ((GameObject.TranslationY - Player.TranslationY) * (GameObject.TranslationY - Player.TranslationY)));
-            Debug.WriteLine(distance);
+            //Debug.WriteLine(distance);
             // BoxView player = FindByName("Player") as BoxView;
             if (distance <= 3)
             {
