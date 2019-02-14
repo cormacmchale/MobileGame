@@ -31,7 +31,7 @@ namespace test
             test.WidthRequest = 50;
             test.SetValue(Grid.RowProperty, 1);
             test.SetValue(Grid.ColumnProperty, 1);
-            Main.Children.Add(test);
+     
             //set up game
             t.Elapsed += T_Elapsed1;
             collisionTimer.Elapsed += T_Elapsed2;

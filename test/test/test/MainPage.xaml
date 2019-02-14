@@ -5,8 +5,6 @@
              xmlns:graphics="clr-namespace:Android.Graphics;assembly=Mono.Android"
              x:Class="test.MainPage">
     
-    <StackLayout x:Name="MainStack">
-
         <Grid x:Name="Main" BackgroundColor="White" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" WidthRequest="750" HeightRequest="750">
             <Grid.RowDefinitions>
                 <RowDefinition Height="2*"/>
@@ -20,12 +18,11 @@
             </Grid.ColumnDefinitions>
             <BoxView x:Name="Player" Grid.Row="1" Grid.Column="1" Color="Black" HeightRequest="25" WidthRequest="25" HorizontalOptions="Center" VerticalOptions="Center"/>
             <BoxView x:Name="GameObject" IsVisible="False" Grid.Row="1" Grid.Column="1" Color="Black" HeightRequest="25" WidthRequest="25" HorizontalOptions="Center" VerticalOptions="Center"/>
-        
-        <Button x:Name="Up" Grid.Row="0" Grid.Column="1" Clicked="Button_Clicked" Opacity="0.5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
-        <Button x:Name="Down" Grid.Row="2" Grid.Column="1" Clicked="Button_Clicked_1" Opacity="0.5"/>
-        <Button x:Name="Left" Grid.Row="1" Grid.Column="0" Clicked="Button_Clicked_2" Opacity="0.5"/>
-        <Button x:Name="Right" Grid.Row="1" Grid.Column="2" Clicked="Button_Clicked_3" Opacity="0.5"/>
+
+            <Button x:Name="Up" Grid.Row="0" Grid.Column="1" Clicked="Button_Clicked" Opacity="0.5"/>
+            <Button x:Name="Down" Grid.Row="2" Grid.Column="1" Clicked="Button_Clicked_1" Opacity="0.5"/>
+            <Button x:Name="Left" Grid.Row="1" Grid.Column="0" Clicked="Button_Clicked_2" Opacity="0.5"/>
+            <Button x:Name="Right" Grid.Row="1" Grid.Column="2" Clicked="Button_Clicked_3" Opacity="0.5"/>
 
         </Grid>
-    </StackLayout>
 </ContentPage>
