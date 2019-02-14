@@ -6,22 +6,26 @@
              x:Class="test.MainPage">
     
     <StackLayout x:Name="MainStack">
-        
-        <Grid x:Name="Main" BackgroundColor="White" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" WidthRequest="500" HeightRequest="500">
 
-        <Grid.RowDefinitions>
-            <RowDefinition Height="6*"/>
-            <RowDefinition Height="2*"/>
-            <RowDefinition Height="2*"/>
-            <RowDefinition Height="2*"/>
+        <Grid x:Name="Main" BackgroundColor="White" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" WidthRequest="500" HeightRequest="500">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="2*"/>
             </Grid.RowDefinitions>
-            <BoxView x:Name="Player" Grid.Row="0" Color="Black" AnchorX="10"  AnchorY="10" HeightRequest="25" WidthRequest="25" HorizontalOptions="Center" VerticalOptions="Center"/>
-            <BoxView x:Name="GameObject" Grid.Row="0" Color="Black" HeightRequest="25" WidthRequest="70" HorizontalOptions="Center" VerticalOptions="Center"/>
-            <Entry x:Name="changeNum"  Grid.Row="1"  Text="Problem solved" VerticalOptions="CenterAndExpand" BackgroundColor="AntiqueWhite"/>
-        <Button Text="Up" Grid.Row="2" Clicked="Button_Clicked" HorizontalOptions="Center"/>
-        <Button Text="Left" Grid.Row="2" Clicked="Button_Clicked_1" HorizontalOptions="Start"/>
-        <Button Text="Right" Grid.Row="2" Clicked="Button_Clicked_2" HorizontalOptions="End"/>
-        <Button Text="Down" Grid.Row="3" Clicked="Button_Clicked_3"/>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+            <BoxView x:Name="Player" Grid.Row="1" Grid.Column="1" Color="Black" HeightRequest="25" WidthRequest="25" HorizontalOptions="Center" VerticalOptions="Center"/>
+            <BoxView x:Name="GameObject" Grid.Row="1" Grid.Column="1" Color="Black" HeightRequest="25" WidthRequest="25" HorizontalOptions="Center" VerticalOptions="Center"/>
+        
+        <Button x:Name="Up" Grid.Row="0" Grid.Column="1" Clicked="Button_Clicked" Opacity="0"/>
+        <Button x:Name="Down" Grid.Row="2" Grid.Column="1" Clicked="Button_Clicked_1" Opacity="0"/>
+        <Button x:Name="Left" Grid.Row="1" Grid.Column="0" Clicked="Button_Clicked_2" Opacity="0"/>
+        <Button x:Name="Right" Grid.Row="1" Grid.Column="2" Clicked="Button_Clicked_3" Opacity="0"/>
+
         </Grid>
     </StackLayout>
 </ContentPage>
