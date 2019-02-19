@@ -16,7 +16,7 @@
                 <ColumnDefinition Width="2*"/>
                 <ColumnDefinition Width="2*"/>
             </Grid.ColumnDefinitions>
-            <BoxView x:Name="Player" Grid.Row="1" Grid.Column="1" Color="Black" HeightRequest="25" WidthRequest="25" HorizontalOptions="Center" VerticalOptions="Center"/>
+            <BoxView x:Name="Player"  IsVisible="False" Grid.Row="1" Grid.Column="1" Color="Black" HeightRequest="25" WidthRequest="25" HorizontalOptions="Center" VerticalOptions="Center"/>
             <BoxView x:Name="GameObject" IsVisible="False" Grid.Row="1" Grid.Column="1" Color="Black" HeightRequest="25" WidthRequest="25" HorizontalOptions="Center" VerticalOptions="Center"/>
 
             <Button x:Name="Up" Grid.Row="0" Grid.Column="1" Clicked="Button_Clicked" Opacity="0.5"/>

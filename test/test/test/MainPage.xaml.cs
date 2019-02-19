@@ -15,7 +15,12 @@ namespace test
         static int movementY = 0;
         static double distance = 0;
         Imager getImage = new Imager();
-
+        Image test = new Image()
+        {
+          HeightRequest = 15,
+          WidthRequest = 15
+        };
+        
         public MainPage()
         {
             InitializeComponent();
@@ -25,13 +30,11 @@ namespace test
         private void InitilizeGame()
         {
             //add image to game
-            Image test = new Image();
-            test = getImage.AddImage();
-            test.HeightRequest = 50;
-            test.WidthRequest = 50;
+            test.Source = getImage.AddImage();
             test.SetValue(Grid.RowProperty, 1);
             test.SetValue(Grid.ColumnProperty, 1);
-     
+            test.Scale = 0.5;
+            Main.Children.Add(test);   
             //set up game
             t.Elapsed += T_Elapsed1;
             collisionTimer.Elapsed += T_Elapsed2;
@@ -105,8 +108,8 @@ namespace test
             {
                 GameObject.TranslationX = -500;
             }
-            Player.TranslationX += movementX;
-            Player.TranslationY += movementY;
+            test.TranslationX += movementX;
+            test.TranslationY += movementY;       
             GameObject.TranslationX++;
         }
     }

@@ -15,13 +15,14 @@ namespace test
         }
 
         //function that adds an image to an object
-        public Image AddImage()
+        public ImageSource AddImage()
         {
+            var assembly = typeof(MainPage);
             var ImageToAdd = new Image()
             {
-                Source = ImageSource.FromFile("test/Assets/player.png")
+                Source = ImageSource.FromResource("test.Assets.player.png", assembly)
             };
-            return ImageToAdd;
+            return ImageSource.FromResource("test.Assets.player.png", assembly);
         }
     }
 }
