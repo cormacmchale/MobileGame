@@ -20,7 +20,8 @@ namespace test
           HeightRequest = 15,
           WidthRequest = 15
         };
-        
+        Image mainBackground = new Image();
+
         public MainPage()
         {
             InitializeComponent();
@@ -30,16 +31,23 @@ namespace test
         private void InitilizeGame()
         {
             //add image to game
-            test.Source = getImage.AddImage();
+            test.Source = getImage.AddImage("player.png");
             test.SetValue(Grid.RowProperty, 1);
             test.SetValue(Grid.ColumnProperty, 1);
             test.Scale = 0.5;
-            Main.Children.Add(test);   
+            mainBackground.SetValue(Grid.RowProperty, 1);
+            mainBackground.SetValue(Grid.ColumnProperty, 1);
+            mainBackground.Source = getImage.AddImage("space.gif");
+            mainBackground.Scale = 3;
+            Main.Children.Add(mainBackground);
+            Main.Children.Add(test);
+
             //set up game
             t.Elapsed += T_Elapsed1;
             collisionTimer.Elapsed += T_Elapsed2;
             t.Start();
-            collisionTimer.Start();       
+            collisionTimer.Start();   
+           
         }
 
         private void T_Elapsed1(object sender, ElapsedEventArgs e)
@@ -100,7 +108,11 @@ namespace test
             movementX = 2;
             movementY = 0;
         }
-
+        private void Button_Clicked_4(object sender, EventArgs e)
+        {
+            movementX = 0;
+            movementY = 0;
+        }
         //fired in thread.. keep small
         private void movingGame()
         {

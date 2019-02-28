@@ -10,11 +10,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Assets\backGround.gif" />
     <None Remove="Assets\player.png" />
+    <None Remove="Assets\space.gif" />
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="Assets\backGround.gif" />
     <EmbeddedResource Include="Assets\player.png" />
+    <EmbeddedResource Include="Assets\space.gif" />
   </ItemGroup>
 
   <ItemGroup>
