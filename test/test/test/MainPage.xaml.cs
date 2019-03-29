@@ -35,14 +35,9 @@ namespace test
             test.SetValue(Grid.RowProperty, 1);
             test.SetValue(Grid.ColumnProperty, 1);
             test.Scale = 0.5;
-            mainBackground.SetValue(Grid.RowProperty, 1);
-            mainBackground.SetValue(Grid.ColumnProperty, 1);
-            mainBackground.Source = getImage.AddImage("space.gif");
-            mainBackground.Scale = 3;
-            //Main.Children.Add(mainBackground);
             Main.Children.Add(test);
 
-            //set up game
+            //set up timers
             t.Elapsed += T_Elapsed1;
             collisionTimer.Elapsed += T_Elapsed2;
             t.Start();
@@ -97,27 +92,29 @@ namespace test
         }
 
         #region button press logic (translation and rotation)
-        //change movement
         private void UPMOVE(object sender, EventArgs e)
         {
+            test.RotationX = 10;
             movementY = -2;
             movementX = 0;
         }
-        //change movement
         private void DOWNMOVE(object sender, EventArgs e)
         {
+            test.RotationX = -10;
             movementY = +2;
             movementX = 0;
         }
-        //change movement
         private void LEFT(object sender, EventArgs e)
         {
+            test.RotationY = -12;
+            test.Rotation = 0;
             movementX = -2;
             movementY = 0;
         }
-        //change movement
         private void RIGHT(object sender, EventArgs e)
         {
+            test.RotationY = 12;
+            test.Rotation = 0;
             movementX = 2;
             movementY = 0;
         }
@@ -128,24 +125,26 @@ namespace test
         }
         private void UPLEFTMOVE(object sender, EventArgs e)
         {
+            test.Rotation = -15;
             movementX = -2;
             movementY = -2;
-            //unsure what to do here
-            //test.RotationX = 20;
         }
         private void DOWNLEFTMOVE(object sender, EventArgs e)
         {
+            test.Rotation = -15;
             movementX = -2;
             movementY = +2;
         }
 
         private void UPRIGHTMOVE(object sender, EventArgs e)
         {
+            test.Rotation = 15;
             movementX = +2;
             movementY = -2;
         }
         private void DOWNRIGHTMOVE(object sender, EventArgs e)
         {
+            test.Rotation = 15;
             movementX = +2;
             movementY = +2;
         }
