@@ -3,15 +3,17 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:test"
              xmlns:graphics="clr-namespace:Android.Graphics;assembly=Mono.Android"
-             x:Class="test.MainPage"
-             x:Name="backGround">
+             x:Class="test.MainPage">
 
     <ContentPage.Resources>
     
         
     </ContentPage.Resources>
 
-    <Grid x:Name="Main" BackgroundColor="Gray" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" WidthRequest="750" HeightRequest="750">
+    <Grid x:Name="Main" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" WidthRequest="750" HeightRequest="750">
+
+        <Image x:Name="background" Source="backGround.gif" Aspect="AspectFit" Grid.ColumnSpan="3" Grid.RowSpan="3" Grid.Row="0" Grid.Column="0"/>
+
         <Grid.RowDefinitions>
             <RowDefinition Height="2*"/>
             <RowDefinition Height="2*"/>

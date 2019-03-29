@@ -31,7 +31,7 @@ namespace test
         private void InitilizeGame()
         {
             //add image to game
-            test.Source = getImage.AddImage("playerShip.png");
+            test.Source = getImage.AddImage("player.gif");
             test.SetValue(Grid.RowProperty, 1);
             test.SetValue(Grid.ColumnProperty, 1);
             test.Scale = 0.5;
