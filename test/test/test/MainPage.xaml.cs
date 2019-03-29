@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Timers;
 using Xamarin.Forms;
@@ -7,6 +8,7 @@ namespace test
 {
     public partial class MainPage : ContentPage
     {
+        private List<Image> gameObjects = new List<Image>();
         //10 milliseconds is optimal for player movement speed
         Timer t = new Timer(10);
         Timer collisionTimer = new Timer(50);
@@ -14,13 +16,15 @@ namespace test
         static int movementX = 0;
         static int movementY = 0;
         static double distance = 0;
+        //class for retrieving images for whatever object needs and image
         Imager getImage = new Imager();
-        Image test = new Image()
+        Image playerShip = new Image()
         {
           HeightRequest = 15,
           WidthRequest = 15
         };
-        Image mainBackground = new Image();
+
+
 
         public MainPage()
         {
@@ -31,18 +35,36 @@ namespace test
         private void InitilizeGame()
         {
             //add image to game
-            test.Source = getImage.AddImage("player.gif");
-            test.SetValue(Grid.RowProperty, 1);
-            test.SetValue(Grid.ColumnProperty, 1);
-            test.Scale = 0.5;
-            Main.Children.Add(test);
+            playerShip.Source = getImage.AddImage("player.gif");
+            playerShip.SetValue(Grid.RowProperty, 1);
+            playerShip.SetValue(Grid.ColumnProperty, 1);
+            playerShip.Scale = 0.5;
+            Main.Children.Add(playerShip);
 
             //set up timers
             t.Elapsed += T_Elapsed1;
             collisionTimer.Elapsed += T_Elapsed2;
             t.Start();
-            collisionTimer.Start();   
+            collisionTimer.Start();
+
+            addAsteroid();
            
+        }
+
+        //method will create and add a game object that looks like an asteroid to a list
+        //can just use the Image object as Game Objects
+        private void addAsteroid()
+        {
+            //throw new NotImplementedException();
+            Image asteroid = new Image();
+            asteroid.Source = getImage.AddImage("asteroidTwo.png");
+            Main.Children.Add(asteroid);
+            asteroid.Scale = .2;
+            asteroid.SetValue(Grid.RowProperty, 1);
+            asteroid.SetValue(Grid.ColumnProperty, 1);
+            asteroid.TranslationX = 50;
+            asteroid.TranslationY = 50;
+            gameObjects.Add(asteroid);
         }
 
         private void T_Elapsed1(object sender, ElapsedEventArgs e)
@@ -70,53 +92,56 @@ namespace test
 
         private void collisionDetection()
         {
-            distance = Math.Sqrt(((GameObject.TranslationX - Player.TranslationX) * (GameObject.TranslationX - Player.TranslationX))
-            + ((GameObject.TranslationY - Player.TranslationY) * (GameObject.TranslationY - Player.TranslationY)));
-            //Debug.WriteLine(distance);
-            // BoxView player = FindByName("Player") as BoxView;
-            if (distance <= 3)
+            if (gameObjects.Count > 0)
             {
-                Debug.WriteLine("Collision");
+                foreach (var GameObject in gameObjects)
+                {
+                    distance = Math.Sqrt(((GameObject.TranslationX - playerShip.TranslationX) * (GameObject.TranslationX - playerShip.TranslationX))
+                    + ((GameObject.TranslationY - playerShip.TranslationY) * (GameObject.TranslationY - playerShip.TranslationY)));
+                    Debug.WriteLine(distance);
+                    if (distance <= 3)
+                    {
+                        //Debug.WriteLine(distance);
+                        Debug.WriteLine("Collision");
+                        Main.BackgroundColor = Color.Black;
+                    }
+                }
             }
         }
         //fired in thread.. keep small
         private void movingGame()
         {
-            if (GameObject.TranslationX >= 500)
-            {
-                GameObject.TranslationX = -500;
-            }
-            test.TranslationX += movementX;
-            test.TranslationY += movementY;
-            GameObject.TranslationX++;
+            playerShip.TranslationX += movementX;
+            playerShip.TranslationY += movementY;
+            //add translateTo method for moving the gameObects that the player will have to avoid
         }
 
         #region button press logic (translation and rotation)
         private void UPMOVE(object sender, EventArgs e)
         {
-            test.RotationX = 10;
-            test.Rotation = 0;    
+            playerShip.RotationX = 10;
+            playerShip.Rotation = 0;    
             movementY = -2;
             movementX = 0;
         }
         private void DOWNMOVE(object sender, EventArgs e)
         {
-            test.RotationX = -10;
-            test.Rotation = 0;
+            playerShip.RotationX = -10;
+            playerShip.Rotation = 0;
             movementY = +2;
             movementX = 0;
         }
         private void LEFT(object sender, EventArgs e)
         {
-            test.RotationY = -12;
-            test.Rotation = 0;
+            playerShip.RotationY = -12;
+            playerShip.Rotation = 0;
             movementX = -2;
             movementY = 0;
         }
         private void RIGHT(object sender, EventArgs e)
         {
-            test.RotationY = 12;
-            test.Rotation = 0;
+            playerShip.RotationY = 12;
+            playerShip.Rotation = 0;
             movementX = 2;
             movementY = 0;
         }
@@ -127,26 +152,26 @@ namespace test
         }
         private void UPLEFTMOVE(object sender, EventArgs e)
         {
-            test.Rotation = -15;
+            playerShip.Rotation = -15;
             movementX = -2;
             movementY = -2;
         }
         private void DOWNLEFTMOVE(object sender, EventArgs e)
         {
-            test.Rotation = -15;
+            playerShip.Rotation = -15;
             movementX = -2;
             movementY = +2;
         }
 
         private void UPRIGHTMOVE(object sender, EventArgs e)
         {
-            test.Rotation = 15;
+            playerShip.Rotation = 15;
             movementX = +2;
             movementY = -2;
         }
         private void DOWNRIGHTMOVE(object sender, EventArgs e)
         {
-            test.Rotation = 15;
+            playerShip.Rotation = 15;
             movementX = +2;
             movementY = +2;
         }

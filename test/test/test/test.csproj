@@ -10,12 +10,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Assets\asteroid.png" />
+    <None Remove="Assets\asteroidTwo.png" />
     <None Remove="Assets\player.gif" />
     <None Remove="Assets\player.png" />
     <None Remove="Assets\playerShip.png" />
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="Assets\asteroid.png" />
+    <EmbeddedResource Include="Assets\asteroidTwo.png" />
     <EmbeddedResource Include="Assets\player.gif" />
     <EmbeddedResource Include="Assets\player.png" />
     <EmbeddedResource Include="Assets\playerShip.png" />
