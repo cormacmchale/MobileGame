@@ -31,7 +31,7 @@ namespace test
         private void InitilizeGame()
         {
             //add image to game
-            test.Source = getImage.AddImage("player.png");
+            test.Source = getImage.AddImage("playerShip.png");
             test.SetValue(Grid.RowProperty, 1);
             test.SetValue(Grid.ColumnProperty, 1);
             test.Scale = 0.5;
@@ -39,7 +39,7 @@ namespace test
             mainBackground.SetValue(Grid.ColumnProperty, 1);
             mainBackground.Source = getImage.AddImage("space.gif");
             mainBackground.Scale = 3;
-            Main.Children.Add(mainBackground);
+            //Main.Children.Add(mainBackground);
             Main.Children.Add(test);
 
             //set up game
@@ -84,35 +84,6 @@ namespace test
                 Debug.WriteLine("Collision");
             }
         }
-        //change movement
-        private void Button_Clicked(object sender, EventArgs e)
-        {
-            movementY = -2;
-            movementX = 0;
-        }
-        //change movement
-        private void Button_Clicked_1(object sender, EventArgs e)
-        {
-            movementY = +2;
-            movementX = 0;
-        }
-        //change movement
-        private void Button_Clicked_2(object sender, EventArgs e)
-        {
-            movementX = -2;
-            movementY = 0;
-        }
-        //change movement
-        private void Button_Clicked_3(object sender, EventArgs e)
-        {
-            movementX = 2;
-            movementY = 0;
-        }
-        private void Button_Clicked_4(object sender, EventArgs e)
-        {
-            movementX = 0;
-            movementY = 0;
-        }
         //fired in thread.. keep small
         private void movingGame()
         {
@@ -121,8 +92,65 @@ namespace test
                 GameObject.TranslationX = -500;
             }
             test.TranslationX += movementX;
-            test.TranslationY += movementY;       
+            test.TranslationY += movementY;
             GameObject.TranslationX++;
         }
+
+        #region button press logic (translation and rotation)
+        //change movement
+        private void UPMOVE(object sender, EventArgs e)
+        {
+            movementY = -2;
+            movementX = 0;
+        }
+        //change movement
+        private void DOWNMOVE(object sender, EventArgs e)
+        {
+            movementY = +2;
+            movementX = 0;
+        }
+        //change movement
+        private void LEFT(object sender, EventArgs e)
+        {
+            movementX = -2;
+            movementY = 0;
+        }
+        //change movement
+        private void RIGHT(object sender, EventArgs e)
+        {
+            movementX = 2;
+            movementY = 0;
+        }
+        private void STOP(object sender, EventArgs e)
+        {
+            movementX = 0;
+            movementY = 0;
+        }
+        private void UPLEFTMOVE(object sender, EventArgs e)
+        {
+            movementX = -2;
+            movementY = -2;
+            //unsure what to do here
+            //test.RotationX = 20;
+        }
+        private void DOWNLEFTMOVE(object sender, EventArgs e)
+        {
+            movementX = -2;
+            movementY = +2;
+        }
+
+        private void UPRIGHTMOVE(object sender, EventArgs e)
+        {
+            movementX = +2;
+            movementY = -2;
+        }
+        private void DOWNRIGHTMOVE(object sender, EventArgs e)
+        {
+            movementX = +2;
+            movementY = +2;
+        }
+        #endregion
+
+
     }
 }
