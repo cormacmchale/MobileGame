@@ -95,12 +95,14 @@ namespace test
         private void UPMOVE(object sender, EventArgs e)
         {
             test.RotationX = 10;
+            test.Rotation = 0;    
             movementY = -2;
             movementX = 0;
         }
         private void DOWNMOVE(object sender, EventArgs e)
         {
             test.RotationX = -10;
+            test.Rotation = 0;
             movementY = +2;
             movementX = 0;
         }
