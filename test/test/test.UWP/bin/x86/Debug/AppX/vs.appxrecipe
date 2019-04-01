@@ -30,13 +30,13 @@
     <AppXManifest Include="C:\Users\Cormac\Desktop\MobileGame\test\test\test.UWP\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2019-04-01T16:51:49.502</Modified>
+      <Modified>2019-04-01T19:38:15.358</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\Cormac\Desktop\MobileGame\test\test\test.UWP\bin\x86\Debug\test.UWP.exe">
       <PackagePath>entrypoint\test.UWP.exe</PackagePath>
-      <Modified>2019-04-01T16:51:48.696</Modified>
+      <Modified>2019-04-01T19:38:14.561</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Cormac\.nuget\packages\runtime.win10-x86.microsoft.netcore.universalwindowsplatform\6.1.5\runtimes\win10-x86\nativeassets\uap10.0.15138\clrcompression.dll">
       <PackagePath>clrcompression.dll</PackagePath>
@@ -694,6 +694,10 @@
       <PackagePath>netstandard.dll</PackagePath>
       <Modified>2018-05-16T16:28:36.000</Modified>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Cormac\.nuget\packages\troschuetz.random\4.3.0\lib\netstandard2.0\Troschuetz.Random.dll">
+      <PackagePath>Troschuetz.Random.dll</PackagePath>
+      <Modified>2018-03-11T01:50:24.000</Modified>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Cormac\.nuget\packages\xamarin.forms\3.4.0.1008975\lib\uap10.0\Xamarin.Forms.Core.dll">
       <PackagePath>Xamarin.Forms.Core.dll</PackagePath>
       <Modified>2018-11-13T20:15:30.000</Modified>
@@ -712,7 +716,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Cormac\Desktop\MobileGame\test\test\test\bin\Debug\netstandard2.0\test.dll">
       <PackagePath>test.dll</PackagePath>
-      <Modified>2019-04-01T16:51:43.209</Modified>
+      <Modified>2019-04-01T19:38:08.540</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Cormac\Desktop\MobileGame\test\test\test.UWP\Assets\LargeTile.scale-100.png">
       <PackagePath>Assets\LargeTile.scale-100.png</PackagePath>
@@ -859,11 +863,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Cormac\Desktop\MobileGame\test\test\test.UWP\bin\x86\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
-      <Modified>2019-04-01T16:51:48.518</Modified>
+      <Modified>2019-04-01T19:38:14.354</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Cormac\Desktop\MobileGame\test\test\test.UWP\bin\x86\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>
-      <Modified>2019-04-01T16:51:48.518</Modified>
+      <Modified>2019-04-01T19:38:14.355</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\10.0.16299.0\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
@@ -879,7 +883,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Cormac\Desktop\MobileGame\test\test\test.UWP\bin\x86\Debug\Core\test.UWP.exe">
       <PackagePath>test.UWP.exe</PackagePath>
-      <Modified>2019-04-01T16:51:49.497</Modified>
+      <Modified>2019-04-01T19:38:15.353</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

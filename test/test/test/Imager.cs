@@ -13,7 +13,6 @@ namespace test
         {
             Debug.WriteLine("test");
         }
-
         //function that adds an image to an object
         public ImageSource AddImage(string imageName)
         {

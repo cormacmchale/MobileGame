@@ -598,3 +598,4 @@ C:\Users\Cormac\Desktop\MobileGame\test\test\test.UWP\obj\x86\Debug\FxResources.
 C:\Users\Cormac\Desktop\MobileGame\test\test\test.UWP\obj\x86\Debug\FxResources.System.Threading.SR.resw
 C:\Users\Cormac\Desktop\MobileGame\test\test\test.UWP\obj\x86\Debug\FxResources.System.Transactions.Local.SR.resw
 C:\Users\Cormac\Desktop\MobileGame\test\test\test.UWP\obj\x86\Debug\FxResources.System.ValueTuple.SR.resw
+C:\Users\Cormac\Desktop\MobileGame\test\test\test.UWP\bin\x86\Debug\Troschuetz.Random.dll

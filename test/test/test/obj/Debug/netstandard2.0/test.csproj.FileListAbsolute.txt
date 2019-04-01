@@ -27,7 +27,7 @@ C:\Users\Cormac\Desktop\MobileGame\test\test\test\bin\Debug\netstandard2.0\test.
 C:\Users\Cormac\Desktop\MobileGame\test\test\test\bin\Debug\netstandard2.0\Mono.Android.dll
 C:\Users\Cormac\Desktop\MobileGame\test\test\test\bin\Debug\netstandard2.0\Mono.Android.pdb
 C:\Users\Cormac\Desktop\MobileGame\test\test\test\bin\Debug\netstandard2.0\Mono.Android.xml
-C:\Users\Cormac\Desktop\MobileGame\test\test\test\obj\Debug\netstandard2.0\XamlC.stamp
 C:\Users\Cormac\Desktop\MobileGame\test\test\test\obj\Debug\netstandard2.0\test.csproj.CopyComplete
 C:\Users\Cormac\Desktop\MobileGame\test\test\test\bin\Debug\netstandard2.0\Windows.Foundation.UniversalApiContract.winmd
 C:\Users\Cormac\Desktop\MobileGame\test\test\test\obj\Debug\netstandard2.0\test.csprojAssemblyReference.cache
+C:\Users\Cormac\Desktop\MobileGame\test\test\test\obj\Debug\netstandard2.0\XamlC.stamp

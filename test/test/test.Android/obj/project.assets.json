@@ -2,6 +2,15 @@
   "version": 3,
   "targets": {
     "MonoAndroid,Version=v8.0": {
+      "Troschuetz.Random/4.3.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Troschuetz.Random.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Troschuetz.Random.dll": {}
+        }
+      },
       "Xamarin.Android.Arch.Core.Common/1.0.0": {
         "type": "package",
         "dependencies": {
@@ -338,6 +347,7 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
+          "Troschuetz.Random": "4.3.0",
           "Xamarin.Forms": "3.4.0.1008975"
         },
         "compile": {
@@ -350,6 +360,29 @@
     }
   },
   "libraries": {
+    "Troschuetz.Random/4.3.0": {
+      "sha512": "MwfN3xAyJGGLPyFO0W7cq+jZ7RvSQWs93Jr+QWnLETC/FigyvrBp/NSRs/UpSmkmc03V0tyngppwxbA/3qmgQg==",
+      "type": "package",
+      "path": "troschuetz.random/4.3.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net35/Troschuetz.Random.dll",
+        "lib/net35/Troschuetz.Random.xml",
+        "lib/net40/Troschuetz.Random.dll",
+        "lib/net40/Troschuetz.Random.xml",
+        "lib/net45/Troschuetz.Random.dll",
+        "lib/net45/Troschuetz.Random.xml",
+        "lib/net461/Troschuetz.Random.dll",
+        "lib/net461/Troschuetz.Random.xml",
+        "lib/netstandard1.0/Troschuetz.Random.dll",
+        "lib/netstandard1.0/Troschuetz.Random.xml",
+        "lib/netstandard2.0/Troschuetz.Random.dll",
+        "lib/netstandard2.0/Troschuetz.Random.xml",
+        "troschuetz.random.4.3.0.nupkg.sha512",
+        "troschuetz.random.nuspec"
+      ]
+    },
     "Xamarin.Android.Arch.Core.Common/1.0.0": {
       "sha512": "1xP9Wtfvl36hjws6u76H5wkpGwhIMD/T45K/Z0Y0yOcaUbNuayrL2xeBHo69KE0Ojd5HgLPKZoGTDcBakUT71A==",
       "type": "package",

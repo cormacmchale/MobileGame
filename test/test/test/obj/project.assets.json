@@ -26,6 +26,15 @@
           "build/netstandard2.0/NETStandard.Library.targets": {}
         }
       },
+      "Troschuetz.Random/4.3.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Troschuetz.Random.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Troschuetz.Random.dll": {}
+        }
+      },
       "Xamarin.Forms/3.4.0.1008975": {
         "type": "package",
         "compile": {
@@ -189,6 +198,29 @@
         "netstandard.library.nuspec"
       ]
     },
+    "Troschuetz.Random/4.3.0": {
+      "sha512": "MwfN3xAyJGGLPyFO0W7cq+jZ7RvSQWs93Jr+QWnLETC/FigyvrBp/NSRs/UpSmkmc03V0tyngppwxbA/3qmgQg==",
+      "type": "package",
+      "path": "troschuetz.random/4.3.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net35/Troschuetz.Random.dll",
+        "lib/net35/Troschuetz.Random.xml",
+        "lib/net40/Troschuetz.Random.dll",
+        "lib/net40/Troschuetz.Random.xml",
+        "lib/net45/Troschuetz.Random.dll",
+        "lib/net45/Troschuetz.Random.xml",
+        "lib/net461/Troschuetz.Random.dll",
+        "lib/net461/Troschuetz.Random.xml",
+        "lib/netstandard1.0/Troschuetz.Random.dll",
+        "lib/netstandard1.0/Troschuetz.Random.xml",
+        "lib/netstandard2.0/Troschuetz.Random.dll",
+        "lib/netstandard2.0/Troschuetz.Random.xml",
+        "troschuetz.random.4.3.0.nupkg.sha512",
+        "troschuetz.random.nuspec"
+      ]
+    },
     "Xamarin.Forms/3.4.0.1008975": {
       "sha512": "036/h8HtzRFgTrfhY57IeHoYRsPTO2XTA6uUFdmZzw2QR1sdszfofhI9HrCJTRx6fCzmjPg5Cxk5chYrjKarNw==",
       "type": "package",
@@ -339,6 +371,7 @@
   "projectFileDependencyGroups": {
     ".NETStandard,Version=v2.0": [
       "NETStandard.Library >= 2.0.3",
+      "Troschuetz.Random >= 4.3.0",
       "Xamarin.Forms >= 3.4.0.1008975"
     ]
   },
@@ -388,6 +421,10 @@
             "target": "Package",
             "version": "[2.0.3, )",
             "autoReferenced": true
+          },
+          "Troschuetz.Random": {
+            "target": "Package",
+            "version": "[4.3.0, )"
           },
           "Xamarin.Forms": {
             "target": "Package",

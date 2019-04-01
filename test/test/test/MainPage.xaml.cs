@@ -1,36 +1,37 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.Threading.Tasks;
 using System.Timers;
 using Xamarin.Forms;
-
 namespace test
 {
     public partial class MainPage : ContentPage
     {
-        private List<Image> gameObjects = new List<Image>();
+        //keep track of game objects
+        private ObservableCollection<Image> gameObjects = new ObservableCollection<Image>();
         //10 milliseconds is optimal for player movement speed
         Timer t = new Timer(50);
         Timer collisionTimer = new Timer(50);
-        Timer translateTimer = new Timer(2000);
+        Timer translateTimer = new Timer(3000);
         //variables for movement and collision detection
         static int movementX = 0;
         static int movementY = 0;
         static double distance = 0;
         //class for retrieving images for whatever object needs and image
         Imager getImage = new Imager();
+        //main player
         Image playerShip = new Image()
         {
           HeightRequest = 15,
           WidthRequest = 15
         };
-        Image asteroid;
         public MainPage()
         {
             InitializeComponent();
             InitilizeGame();
         }
-
         private void InitilizeGame()
         {
             //add image to game
@@ -47,37 +48,34 @@ namespace test
             translateTimer.Elapsed += TranslateTimer_Elapsed;
             collisionTimer.Start();
             t.Start();
+            translateTimer.Start();
             addAsteroid();
-
         }
         //runs like oninit()
         protected override void OnAppearing()
         {
             base.OnAppearing(); 
         }
-
         //method will create and add a game object that looks like an asteroid to a list
         //can just use the Image object as Game Objects
         private void addAsteroid()
         {
             //throw new NotImplementedException();
-            asteroid = new Image() {
-                HeightRequest = 2,
-                WidthRequest = 2
-            };
+            Image asteroid = new Image();
             asteroid.Source = getImage.AddImage("newAsteroid.png");
             //asteroid.Scale = .5;
             //asteroid.SetValue(Grid.RowProperty, 1);
             //asteroid.SetValue(Grid.ColumnProperty, 1);
-            asteroid.TranslationX = 50;
-            asteroid.TranslationY = 50;
+            asteroid.TranslationX = 300;
+            asteroid.TranslationY = 300;
+            gameObjects.Add(asteroid);
             Main.Children.Add(asteroid);
-
-            //gameObjects.Add(asteroid);
         }
         private void TranslateTimer_Elapsed(object sender, ElapsedEventArgs e)
         {
-            Device.BeginInvokeOnMainThread(() =>
+          
+            Debug.Write("move");
+            Device.BeginInvokeOnMainThread( () =>
             {
                 //move the pieces
                 MoveGameObjects();
@@ -85,12 +83,6 @@ namespace test
             }
             );
         }
-
-        private void MoveGameObjects()
-        {
-            throw new NotImplementedException();
-        }
-
         private void T_Elapsed1(object sender, ElapsedEventArgs e)
         {
             Device.BeginInvokeOnMainThread(() =>
@@ -113,36 +105,48 @@ namespace test
             );
             //CoreDispatcher.
         }
-
+        #region - timer Methods
         private void collisionDetection()
         {
-           //if (gameObjects.Count > 0)
-           // {
-               // foreach (var GameObject in gameObjects)
-               // {
-                    distance = Math.Sqrt(((asteroid.TranslationX - playerShip.TranslationX) * (asteroid.TranslationX - playerShip.TranslationX))
-                    + ((asteroid.TranslationY - playerShip.TranslationY) * (asteroid.TranslationY - playerShip.TranslationY)));
-                    Debug.WriteLine("Asteroid X="+asteroid.TranslationX+" "+"Player X="+playerShip.TranslationX);
-                    Debug.WriteLine("Asteroid Y=" + asteroid.TranslationY + " " + "Player Y=" + playerShip.TranslationY);
-            Debug.WriteLine(distance);
-            //Debug.WriteLine(GameObject.X + " " + playerShip.X);
-            if (distance <= 5)
+           if (gameObjects.Count > 0)
+           {
+                foreach (var GameObject in gameObjects)
+                {
+                    distance = Math.Sqrt(((GameObject.TranslationX - playerShip.TranslationX) * (GameObject.TranslationX - playerShip.TranslationX))
+                    + ((GameObject.TranslationY - playerShip.TranslationY) * (GameObject.TranslationY - playerShip.TranslationY)));
+                    // Debug.WriteLine("Asteroid X="+asteroid.TranslationX+" "+"Player X="+playerShip.TranslationX);
+                    // Debug.WriteLine("Asteroid Y=" + asteroid.TranslationY + " " + "Player Y=" + playerShip.TranslationY);
+                    //Debug.WriteLine(distance);
+                    //Debug.WriteLine(GameObject.X + " " + playerShip.X);
+                    if (distance <= 45)
                     {
                         //Debug.WriteLine(distance);
                         Debug.WriteLine("Collision");
-                        Main.BackgroundColor = Color.Black;
+                        //Main.BackgroundColor = Color.Black;
+                        //pop new page onto the stack
+                        //pass score into save file
+                        //new page should read file
                     }
-              //  }
-           // }
+                }
+           }
         }
-        //fired in thread.. keep small
+        private void MoveGameObjects()
+        {
+            foreach (var GameObject in gameObjects)
+            {
+                //Debug.Write("move");
+                Random r = new Random();
+                int moveX = r.Next(0, 200);
+                int moveY = r.Next(0, 200);
+                GameObject.TranslateTo(moveX, moveY, 2000);
+            }
+        }
         private void movingGame()
         {
             playerShip.TranslationX += movementX;
             playerShip.TranslationY += movementY;
-            //add translateTo method for moving the gameObects that the player will have to avoid
         }
-
+        #endregion
         #region button press logic (translation and rotation)
         private void UPMOVE(object sender, EventArgs e)
         {
@@ -174,6 +178,7 @@ namespace test
         }
         private void STOP(object sender, EventArgs e)
         {
+            addAsteroid();
             movementX = 0;
             movementY = 0;
         }
@@ -203,7 +208,5 @@ namespace test
             movementY = +2;
         }
         #endregion
-
-
     }
 }

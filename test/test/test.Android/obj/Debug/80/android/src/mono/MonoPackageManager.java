@@ -109,6 +109,7 @@ class MonoPackageManager_Resources {
 		"test.Android.dll",
 		"FormsViewGroup.dll",
 		"test.dll",
+		"Troschuetz.Random.dll",
 		"Xamarin.Android.Arch.Core.Common.dll",
 		"Xamarin.Android.Arch.Lifecycle.Common.dll",
 		"Xamarin.Android.Arch.Lifecycle.Runtime.dll",
