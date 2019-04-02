@@ -12,8 +12,8 @@ namespace test
         //keep track of game objects
         private ObservableCollection<Image> gameObjects = new ObservableCollection<Image>();
         //10 milliseconds is optimal for player movement speed
-        Timer t = new Timer(50);
-        Timer collisionTimer = new Timer(50);
+        Timer t = new Timer(100);
+        Timer collisionTimer = new Timer(30);
         Timer translateTimer = new Timer(3000);
         //variables for movement and collision detection
         static int movementX = 0;
@@ -143,18 +143,34 @@ namespace test
                     // Debug.WriteLine("Asteroid Y=" + asteroid.TranslationY + " " + "Player Y=" + playerShip.TranslationY);
                     //Debug.WriteLine(distance);
                     //Debug.WriteLine(GameObject.X + " " + playerShip.X);
-                    if (distance <= 45)
+                    if (distance <= 40)
                     {
                         //Debug.WriteLine(distance);
                         Debug.WriteLine("Collision");
-                        //Main.BackgroundColor = Color.Black;
+                        if (Main.BackgroundColor == Color.Black)
+                        {
+                            Main.BackgroundColor = Color.White;
+                        }
+                        else
+                        {
+                            Main.BackgroundColor = Color.Black;
+                        }
                         //pop new page onto the stack
-                        //pass score into save file
-                        //new page should read file
+                        changePage();
+                        return;
+
                     }
                 }
            }
         }
+
+        private async void changePage()
+        {
+            //pass score into save file
+            //new page should read file
+            await Navigation.PushAsync(new HighScoreReplay());
+        }
+
         private void MoveGameObjects()
         {
             foreach (var GameObject in gameObjects)
