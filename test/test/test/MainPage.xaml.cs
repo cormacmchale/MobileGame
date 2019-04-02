@@ -12,7 +12,7 @@ namespace test
         //keep track of game objects
         private ObservableCollection<Image> gameObjects = new ObservableCollection<Image>();
         //10 milliseconds is optimal for player movement speed
-        Timer t = new Timer(100);
+        Timer movePlayer = new Timer(70);
         Timer collisionTimer = new Timer(30);
         Timer translateTimer = new Timer(3000);
         //variables for movement and collision detection
@@ -38,17 +38,14 @@ namespace test
             playerShip.Source = getImage.AddImage("player.gif");
             //playerShip.SetValue(Grid.RowProperty, 1);
             //playerShip.SetValue(Grid.ColumnProperty, 1);
-            playerShip.Scale = 0.5;
+            //playerShip.Scale = 0.5;
             //playerShip.TranslationX = 20;
             //playerShip.TranslationY = 20;
             Main.Children.Add(playerShip);
             //set up timers
-            t.Elapsed += T_Elapsed1;
+            movePlayer.Elapsed += T_Elapsed1;
             collisionTimer.Elapsed += T_Elapsed2;
             translateTimer.Elapsed += TranslateTimer_Elapsed;
-            collisionTimer.Start();
-            t.Start();
-            translateTimer.Start();
             //add all images first
             addImages();
             //add buttons
@@ -65,7 +62,6 @@ namespace test
             b.SetValue(Grid.RowSpanProperty, 3);
             b.SetValue(Button.OpacityProperty, 0.5);
             Main.Children.Add(b);
-
             b.Clicked += B_Clicked;
         }
 
@@ -77,10 +73,39 @@ namespace test
         }
 
         //runs like oninit()
+        //start and stop timer just in case they continue to run after page navigation
         protected override void OnAppearing()
         {
-            base.OnAppearing(); 
+            base.OnAppearing();
+            collisionTimer.Start();
+            movePlayer.Start();
+            translateTimer.Start();
         }
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            movePlayer.Stop();
+            translateTimer.Stop();
+            //reset Game function
+            resetGame();
+        }
+        //this method should clear all the game objects and reset the player to where they were in main page
+        //maybe runs better when the page appears
+        private void resetGame()
+        {
+            playerShip.TranslationX = 0;
+            playerShip.TranslationY = 0;
+            movementX = 0;
+            movementY = 0;
+            //make all of the objects invisible
+            foreach (var GameObject in gameObjects)
+            {
+                GameObject.IsVisible = false;
+            }
+            //then clear the list
+            gameObjects.Clear();
+        }
+
         //method will create and add a game object that looks like an asteroid to a list
         //can just use the Image object as Game Objects
         private void addImages()
@@ -114,7 +139,6 @@ namespace test
             {
                 //move the pieces
                 movingGame();
-                //detect collisions
             }
             );
             //CoreDispatcher.
@@ -123,12 +147,10 @@ namespace test
         {
             Device.BeginInvokeOnMainThread(() =>
             {
-                //move the pieces
-                collisionDetection();
                 //detect collisions
+                collisionDetection();
             }
             );
-            //CoreDispatcher.
         }
         #region - timer Methods
         private void collisionDetection()
@@ -147,18 +169,10 @@ namespace test
                     {
                         //Debug.WriteLine(distance);
                         Debug.WriteLine("Collision");
-                        if (Main.BackgroundColor == Color.Black)
-                        {
-                            Main.BackgroundColor = Color.White;
-                        }
-                        else
-                        {
-                            Main.BackgroundColor = Color.Black;
-                        }
+                        //stop the collision timer
+                        collisionTimer.Stop();
                         //pop new page onto the stack
                         changePage();
-                        return;
-
                     }
                 }
            }
@@ -220,6 +234,7 @@ namespace test
         private void STOP(object sender, EventArgs e)
         {
             //addAsteroid();
+            gameObjects.Clear();
             movementX = 0;
             movementY = 0;
         }
