@@ -49,8 +49,33 @@ namespace test
             collisionTimer.Start();
             t.Start();
             translateTimer.Start();
-            addAsteroid();
+            //add all images first
+            addImages();
+            //add buttons
+            addbuttons();
         }
+
+        private void addbuttons()
+        {
+            //throw new NotImplementedException();
+            Button b = new Button();
+            b.SetValue(Grid.RowProperty, 8);
+            b.SetValue(Grid.ColumnProperty, 8);
+            b.SetValue(Grid.ColumnSpanProperty, 3);
+            b.SetValue(Grid.RowSpanProperty, 3);
+            b.SetValue(Button.OpacityProperty, 0.5);
+            Main.Children.Add(b);
+
+            b.Clicked += B_Clicked;
+        }
+
+        //button testing
+        private void B_Clicked(object sender, EventArgs e)
+        {
+            addImages();
+            //throw new NotImplementedException();
+        }
+
         //runs like oninit()
         protected override void OnAppearing()
         {
@@ -58,7 +83,7 @@ namespace test
         }
         //method will create and add a game object that looks like an asteroid to a list
         //can just use the Image object as Game Objects
-        private void addAsteroid()
+        private void addImages()
         {
             //throw new NotImplementedException();
             Image asteroid = new Image();
@@ -178,7 +203,7 @@ namespace test
         }
         private void STOP(object sender, EventArgs e)
         {
-            addAsteroid();
+            //addAsteroid();
             movementX = 0;
             movementY = 0;
         }
