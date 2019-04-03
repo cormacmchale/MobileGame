@@ -26,3 +26,4 @@ Xamarin.Forms.Platform
 Xamarin.Forms.Xaml
 netstandard
 Troschuetz.Random
+Newtonsoft.Json

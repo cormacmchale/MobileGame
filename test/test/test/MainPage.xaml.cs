@@ -182,7 +182,7 @@ namespace test
         {
             //pass score into save file
             //new page should read file
-            await Navigation.PushAsync(new HighScoreReplay());
+            await Navigation.PushAsync(new HighScoreReplay(200));
         }
 
         private void MoveGameObjects()

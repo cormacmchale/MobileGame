@@ -30,5 +30,5 @@ C:\Users\Cormac\Desktop\MobileGame\test\test\test\bin\Debug\netstandard2.0\Mono.
 C:\Users\Cormac\Desktop\MobileGame\test\test\test\obj\Debug\netstandard2.0\test.csproj.CopyComplete
 C:\Users\Cormac\Desktop\MobileGame\test\test\test\bin\Debug\netstandard2.0\Windows.Foundation.UniversalApiContract.winmd
 C:\Users\Cormac\Desktop\MobileGame\test\test\test\obj\Debug\netstandard2.0\test.csprojAssemblyReference.cache
-C:\Users\Cormac\Desktop\MobileGame\test\test\test\obj\Debug\netstandard2.0\XamlC.stamp
 C:\Users\Cormac\Desktop\MobileGame\test\test\test\obj\Debug\netstandard2.0\HighScoreReplay.xaml.g.cs
+C:\Users\Cormac\Desktop\MobileGame\test\test\test\obj\Debug\netstandard2.0\XamlC.stamp

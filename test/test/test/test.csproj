@@ -16,6 +16,7 @@
     <None Remove="Assets\player.gif" />
     <None Remove="Assets\player.png" />
     <None Remove="Assets\playerShip.png" />
+    <None Remove="HighScores\highScores.txt" />
   </ItemGroup>
 
   <ItemGroup>
@@ -25,9 +26,11 @@
     <EmbeddedResource Include="Assets\player.gif" />
     <EmbeddedResource Include="Assets\player.png" />
     <EmbeddedResource Include="Assets\playerShip.png" />
+    <EmbeddedResource Include="HighScores\highScores.txt" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
     <PackageReference Include="Troschuetz.Random" Version="4.3.0" />
     <PackageReference Include="Xamarin.Forms" Version="3.4.0.1008975" />
   </ItemGroup>

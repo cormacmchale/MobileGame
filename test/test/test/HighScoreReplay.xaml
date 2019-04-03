@@ -2,11 +2,14 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="test.HighScoreReplay">
+    
+    
     <ContentPage.Content>
-        <StackLayout>
+        <Grid x:Name="Main">
             <Label Text="High Score"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        </Grid>
+   
     </ContentPage.Content>
 </ContentPage>
