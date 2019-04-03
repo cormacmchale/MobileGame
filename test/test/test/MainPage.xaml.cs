@@ -32,6 +32,7 @@ namespace test
         {
             InitializeComponent();
             InitilizeGame();
+            this.BindingContext = score;
         }
         private void InitilizeGame()
         {
