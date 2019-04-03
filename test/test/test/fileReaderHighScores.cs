@@ -12,7 +12,7 @@ namespace test
         public static List<scorePosition> readInHighScoreList()
         {
             List<scorePosition> list = new List<scorePosition>();
-
+            //try saved data first... if not then read local file
             string fileString;
             //read the defaultData.txt
             var assembly = IntrospectionExtensions.GetTypeInfo(typeof(HighScoreReplay)).Assembly;
@@ -25,5 +25,7 @@ namespace test
             list = JsonConvert.DeserializeObject<List<scorePosition>>(fileString);
             return list;
         }
+
+        //add method for saving data also
     }
 }

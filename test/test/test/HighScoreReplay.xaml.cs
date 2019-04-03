@@ -17,12 +17,12 @@ namespace test
 		{
 			InitializeComponent();
             readScoresFromFile();
-            setUpScoreBoard();
-            Debug.WriteLine(Score);
+            setUpScoreBoard(Score);
 		}
 
-        private void setUpScoreBoard()
+        private void setUpScoreBoard(int score)
         {
+            Debug.WriteLine(score);
             ListView scores = new ListView();
             scores.ItemsSource = highScore;
             Main.Children.Add(scores);
@@ -32,7 +32,7 @@ namespace test
         {
             Debug.Write("In Method \n");
             highScore = fileReaderHighScores.readInHighScoreList();
-            Debug.Write(highScore[0].Score);
+            //Debug.Write(highScore[0].Score);
             //throw new NotImplementedException();
         }
     }

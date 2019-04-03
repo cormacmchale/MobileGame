@@ -11,7 +11,7 @@
     </ContentPage.Resources>
 
     <Grid x:Name="Main" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" WidthRequest="750" HeightRequest="750">
-
+        <Label x:Name="PlayerScore" Grid.Row="0" Grid.Column="9" Text=""/>
         <Image x:Name="background" Source="backGround.gif" Aspect="AspectFit" Grid.ColumnSpan="3" Grid.RowSpan="3" Grid.Row="0" Grid.Column="0"/>
 
         <Grid.RowDefinitions>

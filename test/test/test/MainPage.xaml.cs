@@ -11,6 +11,7 @@ namespace test
     {
         //keep track of game objects
         private ObservableCollection<Image> gameObjects = new ObservableCollection<Image>();
+        scorePosition score = new scorePosition();
         //10 milliseconds is optimal for player movement speed
         Timer movePlayer = new Timer(70);
         Timer collisionTimer = new Timer(30);
@@ -50,6 +51,12 @@ namespace test
             addImages();
             //add buttons
             addbuttons();
+            playerScore();
+        }
+
+        private void playerScore()
+        {
+            PlayerScore.Text = score.Score.ToString();
         }
 
         private void addbuttons()
@@ -123,7 +130,7 @@ namespace test
         }
         private void TranslateTimer_Elapsed(object sender, ElapsedEventArgs e)
         {
-          
+            score.Score++;
             Debug.Write("move");
             Device.BeginInvokeOnMainThread( () =>
             {
@@ -182,7 +189,7 @@ namespace test
         {
             //pass score into save file
             //new page should read file
-            await Navigation.PushAsync(new HighScoreReplay(200));
+            await Navigation.PushAsync(new HighScoreReplay(score.Score));
         }
 
         private void MoveGameObjects()

@@ -9,6 +9,8 @@
             <Label Text="High Score"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
+            <ListView BindingContext="scores">
+            </ListView>
         </Grid>
    
     </ContentPage.Content>
