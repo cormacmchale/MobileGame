@@ -13,7 +13,7 @@ namespace test
         private ObservableCollection<Image> gameObjects = new ObservableCollection<Image>();
         scorePosition score = new scorePosition();
         //10 milliseconds is optimal for player movement speed
-        Timer movePlayer = new Timer(70);
+        Timer movePlayer = new Timer(35);
         Timer collisionTimer = new Timer(30);
         Timer translateTimer = new Timer(3000);
         //variables for movement and collision detection
@@ -23,11 +23,8 @@ namespace test
         //class for retrieving images for whatever object needs and image
         Imager getImage = new Imager();
         //main player
-        Image playerShip = new Image()
-        {
-          HeightRequest = 15,
-          WidthRequest = 15
-        };
+        Image playerShip = new Image();
+        Image space = new Image();
         public MainPage()
         {
             InitializeComponent();
@@ -38,18 +35,28 @@ namespace test
         {
             //add image to game
             playerShip.Source = getImage.AddImage("player.gif");
+            //space.Source = getImage.AddImage("newSpace.png");
+            //space.SetValue(Grid.ColumnSpanProperty, 16);
+            //space.SetValue(Grid.RowSpanProperty, 9);
+            //space.TranslationX -= 120;
+
             //playerShip.SetValue(Grid.RowProperty, 1);
             //playerShip.SetValue(Grid.ColumnProperty, 1);
             //playerShip.Scale = 0.5;
             //playerShip.TranslationX = 20;
             //playerShip.TranslationY = 20;
+
+            //Main.Children.Add(space);
             Main.Children.Add(playerShip);
+
             //set up timers
             movePlayer.Elapsed += T_Elapsed1;
             collisionTimer.Elapsed += T_Elapsed2;
             translateTimer.Elapsed += TranslateTimer_Elapsed;
             //add all images first
-            addImages();
+
+                    //addImages();
+
             //add buttons
             addbuttons();
             //playerScore();
@@ -57,29 +64,92 @@ namespace test
 
         private void playerScore()
         {
-            bindScore.BindingContext = new scorePosition();
-            PlayerScore.BindingContext = score.Score;
+            //bindScore.BindingContext = new scorePosition();
+            //PlayerScore.BindingContext = score.Score;
         }
 
         private void addbuttons()
         {
             //throw new NotImplementedException();
-            Button b = new Button();
-            b.SetValue(Grid.RowProperty, 8);
-            b.SetValue(Grid.ColumnProperty, 8);
-            b.SetValue(Grid.ColumnSpanProperty, 3);
-            b.SetValue(Grid.RowSpanProperty, 3);
-            b.SetValue(OpacityProperty, 0.5);
-            Main.Children.Add(b);
-            b.Clicked += B_Clicked;
+            Button DownRight = new Button();
+            DownRight.SetValue(Grid.RowProperty, 6);
+            DownRight.SetValue(Grid.ColumnProperty, 6);
+            DownRight.SetValue(Grid.ColumnSpanProperty, 3);
+            DownRight.SetValue(Grid.RowSpanProperty, 3);
+            DownRight.SetValue(OpacityProperty, 0.0);
+            Main.Children.Add(DownRight);
+            DownRight.Clicked+=DOWNRIGHTMOVE;
+
+            Button Down = new Button();
+            Down.SetValue(Grid.RowProperty, 6);
+            Down.SetValue(Grid.ColumnProperty, 3);
+            Down.SetValue(Grid.ColumnSpanProperty, 3);
+            Down.SetValue(Grid.RowSpanProperty, 3);
+            Down.SetValue(OpacityProperty, 0.0);
+            Main.Children.Add(Down);
+            Down.Clicked +=DOWNMOVE;
+
+            Button DownLeft = new Button();
+            DownLeft.SetValue(Grid.RowProperty, 6);
+            DownLeft.SetValue(Grid.ColumnProperty, 0);
+            DownLeft.SetValue(Grid.ColumnSpanProperty, 3);
+            DownLeft.SetValue(Grid.RowSpanProperty, 3);
+            DownLeft.SetValue(OpacityProperty, 0.0);
+            Main.Children.Add(DownLeft);
+            DownLeft.Clicked += DOWNLEFTMOVE;
+
+            Button Right = new Button();
+            Right.SetValue(Grid.RowProperty, 3);
+            Right.SetValue(Grid.ColumnProperty, 6);
+            Right.SetValue(Grid.ColumnSpanProperty, 3);
+            Right.SetValue(Grid.RowSpanProperty, 3);
+            Right.SetValue(OpacityProperty, 0.0);
+            Main.Children.Add(Right);
+            Right.Clicked += RIGHT;
+
+            Button Left = new Button();
+            Left.SetValue(Grid.RowProperty, 3);
+            Left.SetValue(Grid.ColumnProperty, 0);
+            Left.SetValue(Grid.ColumnSpanProperty, 3);
+            Left.SetValue(Grid.RowSpanProperty, 3);
+            Left.SetValue(OpacityProperty, 0.0);
+            Main.Children.Add(Left);
+            Left.Clicked += LEFT;
+
+            Button TopLeft = new Button();
+            TopLeft.SetValue(Grid.RowProperty, 0);
+            TopLeft.SetValue(Grid.ColumnProperty, 0);
+            TopLeft.SetValue(Grid.ColumnSpanProperty, 3);
+            TopLeft.SetValue(Grid.RowSpanProperty, 3);
+            TopLeft.SetValue(OpacityProperty, 0.0);
+            Main.Children.Add(TopLeft);
+            TopLeft.Clicked += UPLEFTMOVE;
+
+            Button Top = new Button();
+            Top.SetValue(Grid.RowProperty, 0);
+            Top.SetValue(Grid.ColumnProperty, 3);
+            Top.SetValue(Grid.ColumnSpanProperty, 3);
+            Top.SetValue(Grid.RowSpanProperty, 3);
+            Top.SetValue(OpacityProperty, 0.0);
+            Main.Children.Add(Top);
+            Top.Clicked += UPMOVE;
+
+            Button TopRight = new Button();
+            TopRight.SetValue(Grid.RowProperty, 0);
+            TopRight.SetValue(Grid.ColumnProperty, 6);
+            TopRight.SetValue(Grid.ColumnSpanProperty, 3);
+            TopRight.SetValue(Grid.RowSpanProperty, 3);
+            TopRight.SetValue(OpacityProperty, 0.0);
+            Main.Children.Add(TopRight);
+            TopRight.Clicked += UPRIGHTMOVE;
         }
 
         //button testing
-        private void B_Clicked(object sender, EventArgs e)
-        {
-            addImages();
+        //private void B_Clicked(object sender, EventArgs e)
+        //{
+        //    addImages();
             //throw new NotImplementedException();
-        }
+        //}
 
         //runs like oninit()
         //start and stop timer just in case they continue to run after page navigation
@@ -202,9 +272,9 @@ namespace test
             {
                 //Debug.Write("move");
                 Random r = new Random();
-                int moveX = r.Next(0, 200);
-                int moveY = r.Next(0, 200);
-                GameObject.TranslateTo(moveX, moveY, 2000);
+                int moveX = r.Next(-200, 200);
+                int moveY = r.Next(-200, 200);
+                GameObject.TranslateTo(moveX, moveY, 1700);
             }
         }
         private void movingGame()

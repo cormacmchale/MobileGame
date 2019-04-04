@@ -9,51 +9,34 @@
     
         
     </ContentPage.Resources>
-    
-    <StackLayout Orientation="Vertical">
-        <StackLayout HorizontalOptions="CenterAndExpand" x:Name="bindScore" Grid.Row="0" Grid.Column="9" BindingContext="{Binding Path=score, Mode=OneWayToSource}" Orientation="Horizontal">
-            <Label Text="Score: "/>
-            <Label x:Name="PlayerScore" Text="{Binding Path=Score, Mode=OneWayToSource}"/>
+    <StackLayout x:Name="outsideGrid" Orientation="Vertical">
+        <StackLayout Orientation="Horizontal">
+            <Label Text="The Final Frontier" HorizontalOptions="CenterAndExpand" Margin="2"/>
         </StackLayout>
-        <Grid x:Name="Main" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" WidthRequest="750" HeightRequest="750">
-
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-        
-        <Image x:Name="background" Source="" Aspect="AspectFill" Grid.ColumnSpan="11" Grid.RowSpan="11"/>
-        
-        <Button x:Name="stopPlayer" Grid.Row="1" Grid.Column="1"  Clicked="STOP" Opacity="0.5"/>
-        <Button x:Name="Up" Grid.Row="0" Grid.Column="1" Clicked="UPMOVE" Opacity="0.5"/>
-        <Button x:Name="Down" Grid.Row="2" Grid.Column="1" Clicked="DOWNMOVE" Opacity="0.5"/>
-        <Button x:Name="Left" Grid.Row="1" Grid.Column="0" Clicked="LEFT" Opacity="0.5"/>
-        <Button x:Name="Right" Grid.Row="1" Grid.Column="2" Clicked="RIGHT" Opacity="0.5"/>
-        <Button x:Name="UpLeft" Grid.Row="0" Grid.Column="0"  Clicked="UPLEFTMOVE" Opacity="0.5"/>
-        <Button x:Name="BLeft" Grid.Row="2" Grid.Column="0"  Clicked="DOWNLEFTMOVE" Opacity="0.5"/>
-        <Button x:Name="UpRight" Grid.Row="0" Grid.Column="2" Clicked="UPRIGHTMOVE" Opacity="0.5" />
-        <Button x:Name="BRight" Grid.Row="2" Grid.Column="2" Clicked="DOWNRIGHTMOVE" Opacity="0.5"/>
-
+        <Grid x:Name="Main" Margin="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Image Source="newSpace.jpg" Aspect="AspectFit" Grid.ColumnSpan="9" Grid.RowSpan="9" Grid.Row="0" Grid.Column="0"/>
         </Grid>
     </StackLayout>
 </ContentPage>

@@ -652,6 +652,12 @@
     <AppxPackagedFile Include="C:\Users\Cormac\Desktop\MobileGame\test\test\test.UWP\backGround.png">
       <PackagePath>backGround.png</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Cormac\Desktop\MobileGame\test\test\test.UWP\backGround.jpg">
+      <PackagePath>backGround.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Cormac\Desktop\MobileGame\test\test\test.UWP\newSpace.jpg">
+      <PackagePath>newSpace.jpg</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Cormac\Desktop\MobileGame\test\test\test.UWP\Properties\Default.rd.xml">
       <PackagePath>Properties\Default.rd.xml</PackagePath>
     </AppxPackagedFile>

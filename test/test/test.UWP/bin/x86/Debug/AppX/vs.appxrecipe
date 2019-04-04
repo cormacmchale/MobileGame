@@ -30,13 +30,13 @@
     <AppXManifest Include="C:\Users\Cormac\Desktop\MobileGame\test\test\test.UWP\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2019-04-04T13:58:27.291</Modified>
+      <Modified>2019-04-04T19:31:16.117</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\Cormac\Desktop\MobileGame\test\test\test.UWP\bin\x86\Debug\test.UWP.exe">
       <PackagePath>entrypoint\test.UWP.exe</PackagePath>
-      <Modified>2019-04-04T13:58:25.214</Modified>
+      <Modified>2019-04-04T19:31:15.343</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Cormac\.nuget\packages\newtonsoft.json\12.0.1\lib\netstandard2.0\Newtonsoft.Json.dll">
       <PackagePath>Newtonsoft.Json.dll</PackagePath>
@@ -720,7 +720,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Cormac\Desktop\MobileGame\test\test\test\bin\Debug\netstandard2.0\test.dll">
       <PackagePath>test.dll</PackagePath>
-      <Modified>2019-04-04T13:58:12.000</Modified>
+      <Modified>2019-04-04T19:31:09.680</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Cormac\Desktop\MobileGame\test\test\test.UWP\Assets\LargeTile.scale-100.png">
       <PackagePath>Assets\LargeTile.scale-100.png</PackagePath>
@@ -861,6 +861,14 @@
       <PackagePath>backGround.png</PackagePath>
       <Modified>2019-04-04T11:37:24.904</Modified>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Cormac\Desktop\MobileGame\test\test\test.UWP\backGround.jpg">
+      <PackagePath>backGround.jpg</PackagePath>
+      <Modified>2019-04-04T19:20:23.301</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Cormac\Desktop\MobileGame\test\test\test.UWP\newSpace.jpg">
+      <PackagePath>newSpace.jpg</PackagePath>
+      <Modified>2019-04-04T19:17:15.454</Modified>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Cormac\Desktop\MobileGame\test\test\test.UWP\Properties\Default.rd.xml">
       <PackagePath>Properties\Default.rd.xml</PackagePath>
       <Modified>2019-01-29T08:36:19.465</Modified>
@@ -871,11 +879,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Cormac\Desktop\MobileGame\test\test\test.UWP\bin\x86\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
-      <Modified>2019-04-04T13:58:24.825</Modified>
+      <Modified>2019-04-04T19:31:15.167</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Cormac\Desktop\MobileGame\test\test\test.UWP\bin\x86\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>
-      <Modified>2019-04-04T13:58:24.826</Modified>
+      <Modified>2019-04-04T19:31:15.167</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\10.0.16299.0\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
@@ -887,11 +895,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Cormac\Desktop\MobileGame\test\test\test.UWP\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2019-04-04T11:37:51.681</Modified>
+      <Modified>2019-04-04T19:21:26.714</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Cormac\Desktop\MobileGame\test\test\test.UWP\bin\x86\Debug\Core\test.UWP.exe">
       <PackagePath>test.UWP.exe</PackagePath>
-      <Modified>2019-04-04T13:58:27.280</Modified>
+      <Modified>2019-04-04T19:31:16.111</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

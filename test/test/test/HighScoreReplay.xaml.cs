@@ -35,6 +35,7 @@ namespace test
             //highScore.Sort();
             //ListView scores = new ListView();
             scoreBoard.ItemsSource = highScore;
+            //save scores before leaving
             //Main.Children.Add(scores);
         }
     }
