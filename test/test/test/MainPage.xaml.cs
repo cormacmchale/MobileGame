@@ -157,7 +157,6 @@ namespace test
         {
             base.OnAppearing();
             collisionTimer.Start();
-            movePlayer.Start();
             translateTimer.Start();
         }
         protected override void OnDisappearing()
@@ -307,6 +306,8 @@ namespace test
         }
         private void RIGHT(object sender, EventArgs e)
         {
+            addImages();
+            movePlayer.Start();
             playerShip.RotationY = 12;
             playerShip.Rotation = 0;
             movementX = 2;
