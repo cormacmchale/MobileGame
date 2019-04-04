@@ -9,6 +9,7 @@
     
         
     </ContentPage.Resources>
+    
     <StackLayout Orientation="Vertical">
         <StackLayout HorizontalOptions="CenterAndExpand" x:Name="bindScore" Grid.Row="0" Grid.Column="9" BindingContext="{Binding Path=score, Mode=OneWayToSource}" Orientation="Horizontal">
             <Label Text="Score: "/>
@@ -41,7 +42,7 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         
-        <Image x:Name="background" Source="backGround.png" Aspect="AspectFill" Grid.ColumnSpan="11" Grid.RowSpan="11"/>
+        <Image x:Name="background" Source="" Aspect="AspectFill" Grid.ColumnSpan="11" Grid.RowSpan="11"/>
         
         <Button x:Name="stopPlayer" Grid.Row="1" Grid.Column="1"  Clicked="STOP" Opacity="0.5"/>
         <Button x:Name="Up" Grid.Row="0" Grid.Column="1" Clicked="UPMOVE" Opacity="0.5"/>

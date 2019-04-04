@@ -52,12 +52,13 @@ namespace test
             addImages();
             //add buttons
             addbuttons();
-            playerScore();
+            //playerScore();
         }
 
         private void playerScore()
         {
-            PlayerScore.Text = score.Score;
+            bindScore.BindingContext = new scorePosition();
+            PlayerScore.BindingContext = score.Score;
         }
 
         private void addbuttons()
@@ -68,7 +69,7 @@ namespace test
             b.SetValue(Grid.ColumnProperty, 8);
             b.SetValue(Grid.ColumnSpanProperty, 3);
             b.SetValue(Grid.RowSpanProperty, 3);
-            b.SetValue(Button.OpacityProperty, 0.5);
+            b.SetValue(OpacityProperty, 0.5);
             Main.Children.Add(b);
             b.Clicked += B_Clicked;
         }

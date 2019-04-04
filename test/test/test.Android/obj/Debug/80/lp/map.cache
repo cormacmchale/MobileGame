@@ -1,6 +1,8 @@
 FormsViewGroup
+Newtonsoft.Json
 System.Runtime
 test
+Troschuetz.Random
 Xamarin.Android.Arch.Core.Common
 Xamarin.Android.Arch.Lifecycle.Common
 Xamarin.Android.Arch.Lifecycle.Runtime
@@ -25,5 +27,3 @@ Xamarin.Forms.Platform.Android
 Xamarin.Forms.Platform
 Xamarin.Forms.Xaml
 netstandard
-Troschuetz.Random
-Newtonsoft.Json

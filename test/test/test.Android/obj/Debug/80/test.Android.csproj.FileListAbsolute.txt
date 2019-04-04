@@ -160,10 +160,13 @@ C:\Users\Cormac\Desktop\MobileGame\test\test\test.Android\bin\Debug\System.IO.Co
 C:\Users\Cormac\Desktop\MobileGame\test\test\test.Android\bin\Debug\System.IO.Compression.FileSystem.pdb
 C:\Users\Cormac\Desktop\MobileGame\test\test\test.Android\bin\Debug\System.ComponentModel.Composition.pdb
 C:\Users\Cormac\Desktop\MobileGame\test\test\test.Android\bin\Debug\System.Web.Services.pdb
+C:\Users\Cormac\Desktop\MobileGame\test\test\test.Android\bin\Debug\test.dll.mdb
+C:\Users\Cormac\Desktop\MobileGame\test\test\test.Android\bin\Debug\Newtonsoft.Json.pdb
 C:\Users\Cormac\Desktop\MobileGame\test\test\test.Android\obj\Debug\80\linksrc\test.Android.pdb
 C:\Users\Cormac\Desktop\MobileGame\test\test\test.Android\obj\Debug\80\linksrc\FormsViewGroup.pdb
 C:\Users\Cormac\Desktop\MobileGame\test\test\test.Android\obj\Debug\80\linksrc\Mono.Android.pdb
 C:\Users\Cormac\Desktop\MobileGame\test\test\test.Android\obj\Debug\80\linksrc\mscorlib.pdb
+C:\Users\Cormac\Desktop\MobileGame\test\test\test.Android\obj\Debug\80\linksrc\Newtonsoft.Json.pdb
 C:\Users\Cormac\Desktop\MobileGame\test\test\test.Android\obj\Debug\80\linksrc\System.Core.pdb
 C:\Users\Cormac\Desktop\MobileGame\test\test\test.Android\obj\Debug\80\linksrc\System.pdb
 C:\Users\Cormac\Desktop\MobileGame\test\test\test.Android\obj\Debug\80\linksrc\System.Xml.pdb
@@ -174,7 +177,6 @@ C:\Users\Cormac\Desktop\MobileGame\test\test\test.Android\obj\Debug\80\linksrc\X
 C:\Users\Cormac\Desktop\MobileGame\test\test\test.Android\obj\Debug\80\linksrc\System.Net.Http.pdb
 C:\Users\Cormac\Desktop\MobileGame\test\test\test.Android\obj\Debug\80\linksrc\System.Runtime.Serialization.pdb
 C:\Users\Cormac\Desktop\MobileGame\test\test\test.Android\obj\Debug\80\linksrc\System.ServiceModel.Internals.pdb
-C:\Users\Cormac\Desktop\MobileGame\test\test\test.Android\obj\Debug\80\linksrc\Mono.Security.pdb
 C:\Users\Cormac\Desktop\MobileGame\test\test\test.Android\obj\Debug\80\linksrc\System.Data.pdb
 C:\Users\Cormac\Desktop\MobileGame\test\test\test.Android\obj\Debug\80\linksrc\System.Numerics.pdb
 C:\Users\Cormac\Desktop\MobileGame\test\test\test.Android\obj\Debug\80\linksrc\System.Transactions.pdb
@@ -182,13 +184,14 @@ C:\Users\Cormac\Desktop\MobileGame\test\test\test.Android\obj\Debug\80\linksrc\S
 C:\Users\Cormac\Desktop\MobileGame\test\test\test.Android\obj\Debug\80\linksrc\System.IO.Compression.FileSystem.pdb
 C:\Users\Cormac\Desktop\MobileGame\test\test\test.Android\obj\Debug\80\linksrc\System.ComponentModel.Composition.pdb
 C:\Users\Cormac\Desktop\MobileGame\test\test\test.Android\obj\Debug\80\linksrc\System.Web.Services.pdb
-C:\Users\Cormac\Desktop\MobileGame\test\test\test.Android\bin\Debug\test.dll.mdb
+C:\Users\Cormac\Desktop\MobileGame\test\test\test.Android\obj\Debug\80\linksrc\Mono.Security.pdb
 C:\Users\Cormac\Desktop\MobileGame\test\test\test.Android\obj\Debug\80\linksrc\test.dll.mdb
 C:\Users\Cormac\Desktop\MobileGame\test\test\test.Android\obj\Debug\80\android\assets\test.dll.mdb
 C:\Users\Cormac\Desktop\MobileGame\test\test\test.Android\obj\Debug\80\android\assets\FormsViewGroup.pdb
 C:\Users\Cormac\Desktop\MobileGame\test\test\test.Android\obj\Debug\80\android\assets\Mono.Android.pdb
 C:\Users\Cormac\Desktop\MobileGame\test\test\test.Android\obj\Debug\80\android\assets\Mono.Security.pdb
 C:\Users\Cormac\Desktop\MobileGame\test\test\test.Android\obj\Debug\80\android\assets\mscorlib.pdb
+C:\Users\Cormac\Desktop\MobileGame\test\test\test.Android\obj\Debug\80\android\assets\Newtonsoft.Json.pdb
 C:\Users\Cormac\Desktop\MobileGame\test\test\test.Android\obj\Debug\80\android\assets\System.ComponentModel.Composition.pdb
 C:\Users\Cormac\Desktop\MobileGame\test\test\test.Android\obj\Debug\80\android\assets\System.Core.pdb
 C:\Users\Cormac\Desktop\MobileGame\test\test\test.Android\obj\Debug\80\android\assets\System.Data.pdb
@@ -207,6 +210,4 @@ C:\Users\Cormac\Desktop\MobileGame\test\test\test.Android\obj\Debug\80\android\a
 C:\Users\Cormac\Desktop\MobileGame\test\test\test.Android\obj\Debug\80\android\assets\Xamarin.Forms.Core.pdb
 C:\Users\Cormac\Desktop\MobileGame\test\test\test.Android\obj\Debug\80\android\assets\Xamarin.Forms.Platform.Android.pdb
 C:\Users\Cormac\Desktop\MobileGame\test\test\test.Android\obj\Debug\80\android\assets\Xamarin.Forms.Xaml.pdb
-C:\Users\Cormac\Desktop\MobileGame\test\test\test\bin\Debug\netstandard2.0\test.dll
-C:\Users\Cormac\Desktop\MobileGame\test\test\test.Android\bin\Debug\test.dll.mdb
 C:\Users\Cormac\Desktop\MobileGame\test\test\test.Android\obj\Debug\80\linksrc\test.dll.mdb

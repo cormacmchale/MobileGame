@@ -19,21 +19,23 @@ namespace test
             readScoresFromFile();
             setUpScoreBoard(Score);
 		}
-
-        private void setUpScoreBoard(int score)
-        {
-            Debug.WriteLine(score);
-            //ListView scores = new ListView();
-            scoreBoard.ItemsSource = highScore;
-            //Main.Children.Add(scores);
-        }
-
         private void readScoresFromFile()
         {
-            Debug.Write("In Method \n");
+            //Debug.Write("In Method \n");
             highScore = fileReaderHighScores.readInHighScoreList();
             //Debug.Write(highScore[0].Score);
             //throw new NotImplementedException();
+        }
+        private void setUpScoreBoard(int score)
+        {
+            ///Debug.WriteLine(score);
+            scorePosition newScore = new scorePosition();
+            newScore.Score = score.ToString();
+            highScore.Add(newScore);
+            //highScore.Sort();
+            //ListView scores = new ListView();
+            scoreBoard.ItemsSource = highScore;
+            //Main.Children.Add(scores);
         }
     }
 }
