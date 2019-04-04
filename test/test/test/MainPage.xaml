@@ -9,36 +9,40 @@
     
         
     </ContentPage.Resources>
-
-    <Grid x:Name="Main" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" WidthRequest="750" HeightRequest="750">
-        <Label x:Name="PlayerScore" Grid.Row="0" Grid.Column="9" Text=""/>
-        <Image x:Name="background" Source="backGround.gif" Aspect="AspectFit" Grid.ColumnSpan="3" Grid.RowSpan="3" Grid.Row="0" Grid.Column="0"/>
+    <StackLayout Orientation="Vertical">
+        <StackLayout HorizontalOptions="CenterAndExpand" x:Name="bindScore" Grid.Row="0" Grid.Column="9" BindingContext="{Binding Path=score, Mode=OneWayToSource}" Orientation="Horizontal">
+            <Label Text="Score: "/>
+            <Label x:Name="PlayerScore" Text="{Binding Path=Score, Mode=OneWayToSource}"/>
+        </StackLayout>
+        <Grid x:Name="Main" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" WidthRequest="750" HeightRequest="750">
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="2*"/>
-            <RowDefinition Height="2*"/>
-            <RowDefinition Height="2*"/>
-            <RowDefinition Height="2*"/>
-            <RowDefinition Height="2*"/>
-            <RowDefinition Height="2*"/>
-            <RowDefinition Height="2*"/>
-            <RowDefinition Height="2*"/>
-            <RowDefinition Height="2*"/>
-            <RowDefinition Height="2*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="2*"/>
-            <ColumnDefinition Width="2*"/>
-            <ColumnDefinition Width="2*"/>
-            <ColumnDefinition Width="2*"/>
-            <ColumnDefinition Width="2*"/>
-            <ColumnDefinition Width="2*"/>
-            <ColumnDefinition Width="2*"/>
-            <ColumnDefinition Width="2*"/>
-            <ColumnDefinition Width="2*"/>
-            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-
+        
+        <Image x:Name="background" Source="backGround.png" Aspect="AspectFill" Grid.ColumnSpan="11" Grid.RowSpan="11"/>
+        
         <Button x:Name="stopPlayer" Grid.Row="1" Grid.Column="1"  Clicked="STOP" Opacity="0.5"/>
         <Button x:Name="Up" Grid.Row="0" Grid.Column="1" Clicked="UPMOVE" Opacity="0.5"/>
         <Button x:Name="Down" Grid.Row="2" Grid.Column="1" Clicked="DOWNMOVE" Opacity="0.5"/>
@@ -48,6 +52,7 @@
         <Button x:Name="BLeft" Grid.Row="2" Grid.Column="0"  Clicked="DOWNLEFTMOVE" Opacity="0.5"/>
         <Button x:Name="UpRight" Grid.Row="0" Grid.Column="2" Clicked="UPRIGHTMOVE" Opacity="0.5" />
         <Button x:Name="BRight" Grid.Row="2" Grid.Column="2" Clicked="DOWNRIGHTMOVE" Opacity="0.5"/>
-               
-    </Grid>
+
+        </Grid>
+    </StackLayout>
 </ContentPage>

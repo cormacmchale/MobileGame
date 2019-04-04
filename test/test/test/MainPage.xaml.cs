@@ -32,7 +32,7 @@ namespace test
         {
             InitializeComponent();
             InitilizeGame();
-            this.BindingContext = score;
+            BindingContext = new scorePosition();
         }
         private void InitilizeGame()
         {
@@ -57,7 +57,7 @@ namespace test
 
         private void playerScore()
         {
-            PlayerScore.Text = score.Score.ToString();
+            PlayerScore.Text = score.Score;
         }
 
         private void addbuttons()
@@ -131,8 +131,10 @@ namespace test
         }
         private void TranslateTimer_Elapsed(object sender, ElapsedEventArgs e)
         {
-            score.Score++;
-            Debug.Write("move");
+            int newScore = Convert.ToInt32(score.Score);
+            newScore++;
+            score.Score = newScore.ToString();
+            //Debug.Write("move");
             Device.BeginInvokeOnMainThread( () =>
             {
                 //move the pieces
@@ -190,7 +192,7 @@ namespace test
         {
             //pass score into save file
             //new page should read file
-            await Navigation.PushAsync(new HighScoreReplay(score.Score));
+            await Navigation.PushAsync(new HighScoreReplay(Convert.ToInt32(score.Score)));
         }
 
         private void MoveGameObjects()

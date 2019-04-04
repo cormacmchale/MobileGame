@@ -25,7 +25,6 @@ namespace test
             list = JsonConvert.DeserializeObject<List<scorePosition>>(fileString);
             return list;
         }
-
         //add method for saving data also
     }
 }

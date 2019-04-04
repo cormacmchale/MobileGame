@@ -23,9 +23,9 @@ namespace test
         private void setUpScoreBoard(int score)
         {
             Debug.WriteLine(score);
-            ListView scores = new ListView();
-            scores.ItemsSource = highScore;
-            Main.Children.Add(scores);
+            //ListView scores = new ListView();
+            scoreBoard.ItemsSource = highScore;
+            //Main.Children.Add(scores);
         }
 
         private void readScoresFromFile()

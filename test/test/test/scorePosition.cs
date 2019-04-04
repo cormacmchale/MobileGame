@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Text;
 
 namespace test
@@ -8,8 +9,9 @@ namespace test
     class scorePosition : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
-        private int _score;
-        public int Score {
+        private string _score;
+        public string Score
+        {
                     get
                     {
                         return _score;
@@ -18,17 +20,12 @@ namespace test
                     {
                         if (_score == value) return; // no change
                         _score = value;
-                        // notify the system of the change
-                        // there is a change, whatever is databound will update 
-                        // if PC == null, do nothing, else Invoke the
-                        // PC event handler with the two arguments
-                        //PropertyChanged?.Invoke(this,
-                        //    new PropertyChangedEventArgs(nameof(Size)));
                         OnPropertyChanged(nameof(Score));
                     }
-               }
+        }
         private void OnPropertyChanged(string propertyName)
         {
+            //Debug.WriteLine("Change");
             PropertyChanged?.Invoke(this,
                 new PropertyChangedEventArgs(propertyName));
         }

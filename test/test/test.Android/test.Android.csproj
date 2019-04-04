@@ -99,5 +99,8 @@
   <ItemGroup>
     <EmbeddedResource Include="Resources\drawable\backGround.gif" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\drawable\backGround.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>
