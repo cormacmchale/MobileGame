@@ -12,8 +12,10 @@ namespace test
 {
     public partial class MainPage : ContentPage
     {
+        #region- Global Variables
         //keep track of game objects
         private ObservableCollection<Image> gameObjects = new ObservableCollection<Image>();
+        //keep track of score.. required for data binding
         scorePosition score = new scorePosition();
         //10 milliseconds is optimal for player movement speed
         Timer movePlayer = new Timer(35);
@@ -25,30 +27,23 @@ namespace test
         static int movementY = 0;
         static double distance = 0;
         //class for retrieving images for whatever object needs and image
+        //progamatically useful and nice to experiemnt with c# code
         Imager getImage = new Imager();
-        //main player
+        //main player and background
         Image playerShip = new Image();
+        //this not working as intended
         Image space = new Image();
+        #endregion
+
         public MainPage()
         {
             InitializeComponent();
             InitilizeGame();
-            BindingContext = new scorePosition();
         }
         private void InitilizeGame()
         {
-            //add image to game
+            //add player image to game
             playerShip.Source = getImage.AddImage("player.gif");
-            //space.Source = getImage.AddImage("newSpace.png");
-            //space.SetValue(Grid.ColumnSpanProperty, 16);
-            //space.SetValue(Grid.RowSpanProperty, 9);
-            //space.TranslationX -= 120;
-
-            //playerShip.SetValue(Grid.RowProperty, 1);
-            //playerShip.SetValue(Grid.ColumnProperty, 1);
-            //playerShip.Scale = 0.5;
-            //playerShip.TranslationX = 20;
-            //playerShip.TranslationY = 20;
 
             //set up timers
             movePlayer.Elapsed += T_Elapsed1;
@@ -56,7 +51,7 @@ namespace test
             translateTimer.Elapsed += TranslateTimer_Elapsed;
             sensorTimer.Elapsed += SensorTimer_Elapsed;
 
-
+            //if the accelermoter is available then add the property changed event and start reading.. also start the timer to change movement
             if (CrossDeviceSensors.Current.Accelerometer.IsSupported)
             {
                 CrossDeviceSensors.Current.Accelerometer.OnReadingChanged += (s, a) => {
@@ -70,28 +65,78 @@ namespace test
                 sensorTimer.Start();
             }
 
+            //unsure as to why this wont fill page
             //this now added in xaml
             //Main.Children.Add(space);
             Main.Children.Add(playerShip);
 
-
-            //add all images first
-
-                    //addImages();
-
             //add buttons
             addbuttons();
+            //databinding Fail
             //playerScore();
         }
 
-
-
-        private void playerScore()
+        //method will create and add a game object that looks like an asteroid to a list
+        //can just use the Image object as Game Objects
+        //this method will have to be updated to maybe add images at a random location?
+        //not implemented at the moment
+        //after movement is finished
+        //multiple calls of this method will increase difficulty
+        private void addImages()
         {
-            //bindScore.BindingContext = new scorePosition();
-            //PlayerScore.BindingContext = score.Score;
+            //throw new NotImplementedException();
+            Image asteroid = new Image();
+            asteroid.Source = getImage.AddImage("newAsteroid.png");
+            //asteroid.Scale = .5;
+            //asteroid.SetValue(Grid.RowProperty, 1);
+            //asteroid.SetValue(Grid.ColumnProperty, 1);
+            asteroid.TranslationX = 300;
+            asteroid.TranslationY = 300;
+            gameObjects.Add(asteroid);
+            Main.Children.Add(asteroid);
         }
 
+        #region - Onappearing and disappearing
+        //runs like oninit()
+        //start and stop timer just in case they continue to run after page navigation
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            //loop through collection of images and perform collision detect between the player and those object
+            collisionTimer.Start();
+            //loop through colection of images and perform movement
+            translateTimer.Start();
+            //start allowing the player to move
+            movePlayer.Start();
+        }
+        //when the page goes out of scope in terms of UI
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            movePlayer.Stop();
+            //reset Game function
+            //gets rid of objects without breaking the game
+            resetGame();
+        }
+        //this method should clear all the game objects and reset the player to where they were in main page
+        //maybe runs better when the page appears
+        private void resetGame()
+        {
+            playerShip.TranslationX = 0;
+            playerShip.TranslationY = 0;
+            movementX = 0;
+            movementY = 0;
+            //make all of the objects invisible
+            foreach (var GameObject in gameObjects)
+            {
+                GameObject.IsVisible = false;
+            }
+            //then clear the list
+            gameObjects.Clear();
+        }
+        #endregion
+
+        #region- Buttons added programatically
         //buttons here.. Won't need for the device but may need instead of
         //accelermoeter will now call button presses for android
         private void addbuttons()
@@ -169,62 +214,8 @@ namespace test
             Main.Children.Add(TopRight);
             TopRight.Clicked += UPRIGHTMOVE;
         }
+        #endregion
 
-        //button testing
-        //private void B_Clicked(object sender, EventArgs e)
-        //{
-        //    addImages();
-            //throw new NotImplementedException();
-        //}
-
-        //runs like oninit()
-        //start and stop timer just in case they continue to run after page navigation
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
-            collisionTimer.Start();
-            translateTimer.Start();
-        }
-        protected override void OnDisappearing()
-        {
-            base.OnDisappearing();
-            movePlayer.Stop();
-            translateTimer.Stop();
-            //reset Game function
-            resetGame();
-        }
-        //this method should clear all the game objects and reset the player to where they were in main page
-        //maybe runs better when the page appears
-        private void resetGame()
-        {
-            playerShip.TranslationX = 0;
-            playerShip.TranslationY = 0;
-            movementX = 0;
-            movementY = 0;
-            //make all of the objects invisible
-            foreach (var GameObject in gameObjects)
-            {
-                GameObject.IsVisible = false;
-            }
-            //then clear the list
-            gameObjects.Clear();
-        }
-
-        //method will create and add a game object that looks like an asteroid to a list
-        //can just use the Image object as Game Objects
-        private void addImages()
-        {
-            //throw new NotImplementedException();
-            Image asteroid = new Image();
-            asteroid.Source = getImage.AddImage("newAsteroid.png");
-            //asteroid.Scale = .5;
-            //asteroid.SetValue(Grid.RowProperty, 1);
-            //asteroid.SetValue(Grid.ColumnProperty, 1);
-            asteroid.TranslationX = 300;
-            asteroid.TranslationY = 300;
-            gameObjects.Add(asteroid);
-            Main.Children.Add(asteroid);
-        }
         #region - Timer invoke on main thread
         private void TranslateTimer_Elapsed(object sender, ElapsedEventArgs e)
         {
@@ -269,29 +260,43 @@ namespace test
         }
         #endregion
 
-
         #region - timer Methods
         private void collisionDetection()
         {
            if (gameObjects.Count > 0)
            {
-                foreach (var GameObject in gameObjects)
+                try
                 {
-                    distance = Math.Sqrt(((GameObject.TranslationX - playerShip.TranslationX) * (GameObject.TranslationX - playerShip.TranslationX))
-                    + ((GameObject.TranslationY - playerShip.TranslationY) * (GameObject.TranslationY - playerShip.TranslationY)));
-                    // Debug.WriteLine("Asteroid X="+asteroid.TranslationX+" "+"Player X="+playerShip.TranslationX);
-                    // Debug.WriteLine("Asteroid Y=" + asteroid.TranslationY + " " + "Player Y=" + playerShip.TranslationY);
-                    //Debug.WriteLine(distance);
-                    //Debug.WriteLine(GameObject.X + " " + playerShip.X);
-                    if (distance <= 40)
+                    foreach (var GameObject in gameObjects)
                     {
+                        distance = Math.Sqrt(((GameObject.TranslationX - playerShip.TranslationX) * (GameObject.TranslationX - playerShip.TranslationX))
+                        + ((GameObject.TranslationY - playerShip.TranslationY) * (GameObject.TranslationY - playerShip.TranslationY)));
+                        // Debug.WriteLine("Asteroid X="+asteroid.TranslationX+" "+"Player X="+playerShip.TranslationX);
+                        // Debug.WriteLine("Asteroid Y=" + asteroid.TranslationY + " " + "Player Y=" + playerShip.TranslationY);
                         //Debug.WriteLine(distance);
-                        Debug.WriteLine("Collision");
-                        //stop the collision timer
-                        collisionTimer.Stop();
-                        //pop new page onto the stack
-                        changePage();
+                        //Debug.WriteLine(GameObject.X + " " + playerShip.X);
+                        if (distance <= 40)
+                        {
+                            //Debug.WriteLine(distance);
+                            Debug.WriteLine("Collision");
+                            //stop both timers - android issue maybe?
+                            translateTimer.Stop();
+                            collisionTimer.Stop();
+                            //pop new page onto the stack
+                            changePage();
+                        }
                     }
+                }
+                //error handling for android??
+                catch
+                {
+                    //Debug.WriteLine(distance);
+                    Debug.WriteLine("Collision");
+                    //stop both timers - android issue maybe?
+                    translateTimer.Stop();
+                    collisionTimer.Stop();
+                    //pop new page onto the stack
+                    changePage();
                 }
            }
         }
@@ -306,12 +311,12 @@ namespace test
         {
             //will have to add Large switch statement here for movement??
             //will research better way to do this
-            Debug.WriteLine(X);
+            //Debug.WriteLine(X);
             if (X > 6)
             {
-                movePlayer.Start();
                 movementX = -2;
                 movementY = 0;
+                addImages();
             }
         }
 
@@ -374,7 +379,7 @@ namespace test
         private void STOP(object sender, EventArgs e)
         {
             //addAsteroid();
-            gameObjects.Clear();
+            //gameObjects.Clear();
             movementX = 0;
             movementY = 0;
         }
