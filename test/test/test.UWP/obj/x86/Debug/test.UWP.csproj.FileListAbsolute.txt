@@ -601,3 +601,5 @@ C:\Users\Cormac\Desktop\MobileGame\test\test\test.UWP\obj\x86\Debug\FxResources.
 C:\Users\Cormac\Desktop\MobileGame\test\test\test.UWP\bin\x86\Debug\Troschuetz.Random.dll
 C:\Users\Cormac\Desktop\MobileGame\test\test\test.UWP\bin\x86\Debug\Newtonsoft.Json.dll
 C:\Users\Cormac\Desktop\MobileGame\test\test\test.UWP\bin\x86\Debug\Newtonsoft.Json.pdb
+C:\Users\Cormac\Desktop\MobileGame\test\test\test.UWP\bin\x86\Debug\Plugin.DeviceSensors.dll
+C:\Users\Cormac\Desktop\MobileGame\test\test\test.UWP\obj\x86\Debug\Plugin.DeviceSensors.pri.xml

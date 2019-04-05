@@ -58,6 +58,9 @@ namespace test
                     //Debug.WriteLine(a);
                 };
                 CrossDeviceSensors.Current.Accelerometer.StartReading();
+                //log reading from accelerometer for testing
+                VectorReading n = CrossDeviceSensors.Current.Accelerometer.LastReading;
+                Debug.Write(n.X);
             }
 
 
@@ -83,7 +86,8 @@ namespace test
             //PlayerScore.BindingContext = score.Score;
         }
 
-        //buttons here.. Won't need for the device but may need instead of 
+        //buttons here.. Won't need for the device but may need instead of
+        //accelermoeter will now call button presses for android
         private void addbuttons()
         {
             //throw new NotImplementedException();
@@ -283,9 +287,6 @@ namespace test
 
         private void MoveGameObjects()
         {
-            //log reading from accelerometer for testing
-           VectorReading n = CrossDeviceSensors.Current.Accelerometer.LastReading;
-           Debug.Write(n.X);
 
             foreach (var GameObject in gameObjects)
             {
