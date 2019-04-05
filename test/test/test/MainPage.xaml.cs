@@ -1,10 +1,13 @@
-﻿using System;
+﻿using Plugin.DeviceSensors;
+using Plugin.DeviceSensors.Shared;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Timers;
 using Xamarin.Forms;
+
 namespace test
 {
     public partial class MainPage : ContentPage
@@ -46,6 +49,18 @@ namespace test
             //playerShip.TranslationX = 20;
             //playerShip.TranslationY = 20;
 
+
+
+            if (CrossDeviceSensors.Current.Accelerometer.IsSupported)
+            {
+                CrossDeviceSensors.Current.Accelerometer.OnReadingChanged += (s, a) => {
+                    //Debug.WriteLine(s);
+                    //Debug.WriteLine(a);
+                };
+                CrossDeviceSensors.Current.Accelerometer.StartReading();
+            }
+
+
             //Main.Children.Add(space);
             Main.Children.Add(playerShip);
 
@@ -68,6 +83,7 @@ namespace test
             //PlayerScore.BindingContext = score.Score;
         }
 
+        //buttons here.. Won't need for the device but may need instead of 
         private void addbuttons()
         {
             //throw new NotImplementedException();
@@ -267,6 +283,10 @@ namespace test
 
         private void MoveGameObjects()
         {
+            //log reading from accelerometer for testing
+           VectorReading n = CrossDeviceSensors.Current.Accelerometer.LastReading;
+           Debug.Write(n.X);
+
             foreach (var GameObject in gameObjects)
             {
                 //Debug.Write("move");
@@ -306,7 +326,7 @@ namespace test
         }
         private void RIGHT(object sender, EventArgs e)
         {
-            addImages();
+            //addImages();
             movePlayer.Start();
             playerShip.RotationY = 12;
             playerShip.Rotation = 0;

@@ -222,6 +222,18 @@
           "lib/netstandard2.0/Newtonsoft.Json.dll": {}
         }
       },
+      "Plugin.DeviceSensors/1.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.NETCore.UniversalWindowsPlatform": "5.2.3"
+        },
+        "compile": {
+          "lib/uap10.0.15063/Plugin.DeviceSensors.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0.15063/Plugin.DeviceSensors.dll": {}
+        }
+      },
       "runtime.win10-arm.Microsoft.Net.Native.Compiler/2.1.8": {
         "type": "package",
         "dependencies": {
@@ -331,6 +343,7 @@
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
           "Newtonsoft.Json": "12.0.1",
+          "Plugin.DeviceSensors": "1.0.0",
           "Troschuetz.Random": "4.3.0",
           "Xamarin.Forms": "3.4.0.1008975"
         },
@@ -562,6 +575,18 @@
         },
         "runtime": {
           "lib/netstandard2.0/Newtonsoft.Json.dll": {}
+        }
+      },
+      "Plugin.DeviceSensors/1.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.NETCore.UniversalWindowsPlatform": "5.2.3"
+        },
+        "compile": {
+          "lib/uap10.0.15063/Plugin.DeviceSensors.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0.15063/Plugin.DeviceSensors.dll": {}
         }
       },
       "runtime.win10-arm.Microsoft.Net.Native.Compiler/2.1.8": {
@@ -847,6 +872,7 @@
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
           "Newtonsoft.Json": "12.0.1",
+          "Plugin.DeviceSensors": "1.0.0",
           "Troschuetz.Random": "4.3.0",
           "Xamarin.Forms": "3.4.0.1008975"
         },
@@ -1078,6 +1104,18 @@
         },
         "runtime": {
           "lib/netstandard2.0/Newtonsoft.Json.dll": {}
+        }
+      },
+      "Plugin.DeviceSensors/1.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.NETCore.UniversalWindowsPlatform": "5.2.3"
+        },
+        "compile": {
+          "lib/uap10.0.15063/Plugin.DeviceSensors.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0.15063/Plugin.DeviceSensors.dll": {}
         }
       },
       "runtime.win10-arm-aot.Microsoft.NETCore.UniversalWindowsPlatform/6.1.5": {
@@ -1364,6 +1402,7 @@
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
           "Newtonsoft.Json": "12.0.1",
+          "Plugin.DeviceSensors": "1.0.0",
           "Troschuetz.Random": "4.3.0",
           "Xamarin.Forms": "3.4.0.1008975"
         },
@@ -1596,6 +1635,18 @@
           "lib/netstandard2.0/Newtonsoft.Json.dll": {}
         }
       },
+      "Plugin.DeviceSensors/1.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.NETCore.UniversalWindowsPlatform": "5.2.3"
+        },
+        "compile": {
+          "lib/uap10.0.15063/Plugin.DeviceSensors.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0.15063/Plugin.DeviceSensors.dll": {}
+        }
+      },
       "runtime.win10-arm.Microsoft.Net.Native.Compiler/2.1.8": {
         "type": "package",
         "dependencies": {
@@ -1705,6 +1756,7 @@
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
           "Newtonsoft.Json": "12.0.1",
+          "Plugin.DeviceSensors": "1.0.0",
           "Troschuetz.Random": "4.3.0",
           "Xamarin.Forms": "3.4.0.1008975"
         },
@@ -1936,6 +1988,18 @@
         },
         "runtime": {
           "lib/netstandard2.0/Newtonsoft.Json.dll": {}
+        }
+      },
+      "Plugin.DeviceSensors/1.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.NETCore.UniversalWindowsPlatform": "5.2.3"
+        },
+        "compile": {
+          "lib/uap10.0.15063/Plugin.DeviceSensors.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0.15063/Plugin.DeviceSensors.dll": {}
         }
       },
       "runtime.win10-arm.Microsoft.Net.Native.Compiler/2.1.8": {
@@ -2221,6 +2285,7 @@
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
           "Newtonsoft.Json": "12.0.1",
+          "Plugin.DeviceSensors": "1.0.0",
           "Troschuetz.Random": "4.3.0",
           "Xamarin.Forms": "3.4.0.1008975"
         },
@@ -2452,6 +2517,18 @@
         },
         "runtime": {
           "lib/netstandard2.0/Newtonsoft.Json.dll": {}
+        }
+      },
+      "Plugin.DeviceSensors/1.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.NETCore.UniversalWindowsPlatform": "5.2.3"
+        },
+        "compile": {
+          "lib/uap10.0.15063/Plugin.DeviceSensors.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0.15063/Plugin.DeviceSensors.dll": {}
         }
       },
       "runtime.win10-arm.Microsoft.Net.Native.Compiler/2.1.8": {
@@ -2738,6 +2815,7 @@
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
           "Newtonsoft.Json": "12.0.1",
+          "Plugin.DeviceSensors": "1.0.0",
           "Troschuetz.Random": "4.3.0",
           "Xamarin.Forms": "3.4.0.1008975"
         },
@@ -2969,6 +3047,18 @@
         },
         "runtime": {
           "lib/netstandard2.0/Newtonsoft.Json.dll": {}
+        }
+      },
+      "Plugin.DeviceSensors/1.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.NETCore.UniversalWindowsPlatform": "5.2.3"
+        },
+        "compile": {
+          "lib/uap10.0.15063/Plugin.DeviceSensors.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0.15063/Plugin.DeviceSensors.dll": {}
         }
       },
       "runtime.win10-arm.Microsoft.Net.Native.Compiler/2.1.8": {
@@ -3254,6 +3344,7 @@
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
           "Newtonsoft.Json": "12.0.1",
+          "Plugin.DeviceSensors": "1.0.0",
           "Troschuetz.Random": "4.3.0",
           "Xamarin.Forms": "3.4.0.1008975"
         },
@@ -3485,6 +3576,18 @@
         },
         "runtime": {
           "lib/netstandard2.0/Newtonsoft.Json.dll": {}
+        }
+      },
+      "Plugin.DeviceSensors/1.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.NETCore.UniversalWindowsPlatform": "5.2.3"
+        },
+        "compile": {
+          "lib/uap10.0.15063/Plugin.DeviceSensors.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0.15063/Plugin.DeviceSensors.dll": {}
         }
       },
       "runtime.win10-arm.Microsoft.Net.Native.Compiler/2.1.8": {
@@ -3771,6 +3874,7 @@
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
           "Newtonsoft.Json": "12.0.1",
+          "Plugin.DeviceSensors": "1.0.0",
           "Troschuetz.Random": "4.3.0",
           "Xamarin.Forms": "3.4.0.1008975"
         },
@@ -4327,6 +4431,30 @@
         "lib/portable-net45+win8+wp8+wpa81/Newtonsoft.Json.xml",
         "newtonsoft.json.12.0.1.nupkg.sha512",
         "newtonsoft.json.nuspec"
+      ]
+    },
+    "Plugin.DeviceSensors/1.0.0": {
+      "sha512": "mdE+jw9s3N2/nzO3t5hlpzZLIX0ebo0BemWvwAZ8IxtBaru82sPncIXd5wd/TdW5QeH76jeC6o3tbLCjPDpASg==",
+      "type": "package",
+      "path": "plugin.devicesensors/1.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/monoandroid80/Plugin.DeviceSensors.dll",
+        "lib/monoandroid80/Plugin.DeviceSensors.xml",
+        "lib/netstandard1.0/Plugin.DeviceSensors.dll",
+        "lib/netstandard1.0/Plugin.DeviceSensors.xml",
+        "lib/netstandard2.0/Plugin.DeviceSensors.dll",
+        "lib/netstandard2.0/Plugin.DeviceSensors.xml",
+        "lib/tizen40/Plugin.DeviceSensors.dll",
+        "lib/tizen40/Plugin.DeviceSensors.xml",
+        "lib/uap10.0.15063/Plugin.DeviceSensors.dll",
+        "lib/uap10.0.15063/Plugin.DeviceSensors.pri",
+        "lib/uap10.0.15063/Plugin.DeviceSensors.xml",
+        "lib/xamarinios10/Plugin.DeviceSensors.dll",
+        "lib/xamarinios10/Plugin.DeviceSensors.xml",
+        "plugin.devicesensors.1.0.0.nupkg.sha512",
+        "plugin.devicesensors.nuspec"
       ]
     },
     "runtime.win10-arm-aot.Microsoft.NETCore.UniversalWindowsPlatform/6.1.5": {

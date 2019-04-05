@@ -4,8 +4,12 @@ C:\Users\Cormac\Desktop\MobileGame\test\test\test.Android\obj\Debug\80\android\a
 C:\Users\Cormac\Desktop\MobileGame\test\test\test.Android\obj\Debug\80\android\assets\Mono.Android.dll
 C:\Users\Cormac\Desktop\MobileGame\test\test\test.Android\obj\Debug\80\android\assets\mscorlib.dll
 C:\Users\Cormac\Desktop\MobileGame\test\test\test.Android\obj\Debug\80\android\assets\Newtonsoft.Json.dll
+C:\Users\Cormac\Desktop\MobileGame\test\test\test.Android\obj\Debug\80\android\assets\Plugin.DeviceSensors.dll
 C:\Users\Cormac\Desktop\MobileGame\test\test\test.Android\obj\Debug\80\android\assets\System.Core.dll
 C:\Users\Cormac\Desktop\MobileGame\test\test\test.Android\obj\Debug\80\android\assets\System.dll
+C:\Users\Cormac\Desktop\MobileGame\test\test\test.Android\obj\Debug\80\android\assets\System.IdentityModel.dll
+C:\Users\Cormac\Desktop\MobileGame\test\test\test.Android\obj\Debug\80\android\assets\System.Net.Http.dll
+C:\Users\Cormac\Desktop\MobileGame\test\test\test.Android\obj\Debug\80\android\assets\System.Runtime.Serialization.dll
 C:\Users\Cormac\Desktop\MobileGame\test\test\test.Android\obj\Debug\80\android\assets\System.Xml.dll
 C:\Users\Cormac\Desktop\MobileGame\test\test\test.Android\obj\Debug\80\android\assets\System.Xml.Linq.dll
 C:\Users\Cormac\Desktop\MobileGame\test\test\test.Android\obj\Debug\80\android\assets\test.dll
@@ -33,9 +37,6 @@ C:\Users\Cormac\Desktop\MobileGame\test\test\test.Android\obj\Debug\80\android\a
 C:\Users\Cormac\Desktop\MobileGame\test\test\test.Android\obj\Debug\80\android\assets\Xamarin.Forms.Platform.Android.dll
 C:\Users\Cormac\Desktop\MobileGame\test\test\test.Android\obj\Debug\80\android\assets\Xamarin.Forms.Platform.dll
 C:\Users\Cormac\Desktop\MobileGame\test\test\test.Android\obj\Debug\80\android\assets\Xamarin.Forms.Xaml.dll
-C:\Users\Cormac\Desktop\MobileGame\test\test\test.Android\obj\Debug\80\android\assets\System.Net.Http.dll
-C:\Users\Cormac\Desktop\MobileGame\test\test\test.Android\obj\Debug\80\android\assets\System.Runtime.Serialization.dll
-C:\Users\Cormac\Desktop\MobileGame\test\test\test.Android\obj\Debug\80\android\assets\System.ServiceModel.Internals.dll
 C:\Users\Cormac\Desktop\MobileGame\test\test\test.Android\obj\Debug\80\android\assets\netstandard.dll
 C:\Users\Cormac\Desktop\MobileGame\test\test\test.Android\obj\Debug\80\android\assets\System.Data.dll
 C:\Users\Cormac\Desktop\MobileGame\test\test\test.Android\obj\Debug\80\android\assets\System.Numerics.dll
@@ -45,3 +46,4 @@ C:\Users\Cormac\Desktop\MobileGame\test\test\test.Android\obj\Debug\80\android\a
 C:\Users\Cormac\Desktop\MobileGame\test\test\test.Android\obj\Debug\80\android\assets\System.ComponentModel.Composition.dll
 C:\Users\Cormac\Desktop\MobileGame\test\test\test.Android\obj\Debug\80\android\assets\System.Web.Services.dll
 C:\Users\Cormac\Desktop\MobileGame\test\test\test.Android\obj\Debug\80\android\assets\Mono.Security.dll
+C:\Users\Cormac\Desktop\MobileGame\test\test\test.Android\obj\Debug\80\android\assets\System.ServiceModel.Internals.dll

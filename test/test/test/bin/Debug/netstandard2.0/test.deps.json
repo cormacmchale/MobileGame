@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETStandard,Version=v2.0/",
-    "signature": "e6fd4496fe47e233765cce973e46c4e4785852bd"
+    "signature": "151f6d740f001b46b881e871f5d561bd3ecb8304"
   },
   "compilationOptions": {},
   "targets": {
@@ -11,6 +11,7 @@
         "dependencies": {
           "NETStandard.Library": "2.0.3",
           "Newtonsoft.Json": "12.0.1",
+          "Plugin.DeviceSensors": "1.0.0",
           "Troschuetz.Random": "4.3.0",
           "Xamarin.Forms": "3.4.0.1008975",
           "Mono.Android": "0.0.0.0",
@@ -31,6 +32,14 @@
           "lib/netstandard2.0/Newtonsoft.Json.dll": {
             "assemblyVersion": "12.0.0.0",
             "fileVersion": "12.0.1.22727"
+          }
+        }
+      },
+      "Plugin.DeviceSensors/1.0.0": {
+        "runtime": {
+          "lib/netstandard2.0/Plugin.DeviceSensors.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
           }
         }
       },
@@ -102,6 +111,13 @@
       "sha512": "sha512-pBR3wCgYWZGiaZDYP+HHYnalVnPJlpP1q55qvVb+adrDHmFMDc1NAKio61xTwftK3Pw5h7TZJPJEEVMd6ty8rg==",
       "path": "newtonsoft.json/12.0.1",
       "hashPath": "newtonsoft.json.12.0.1.nupkg.sha512"
+    },
+    "Plugin.DeviceSensors/1.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-mdE+jw9s3N2/nzO3t5hlpzZLIX0ebo0BemWvwAZ8IxtBaru82sPncIXd5wd/TdW5QeH76jeC6o3tbLCjPDpASg==",
+      "path": "plugin.devicesensors/1.0.0",
+      "hashPath": "plugin.devicesensors.1.0.0.nupkg.sha512"
     },
     "Troschuetz.Random/4.3.0": {
       "type": "package",

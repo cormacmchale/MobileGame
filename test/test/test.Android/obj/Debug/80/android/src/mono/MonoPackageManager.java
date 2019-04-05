@@ -109,6 +109,7 @@ class MonoPackageManager_Resources {
 		"test.Android.dll",
 		"FormsViewGroup.dll",
 		"Newtonsoft.Json.dll",
+		"Plugin.DeviceSensors.dll",
 		"test.dll",
 		"Troschuetz.Random.dll",
 		"Xamarin.Android.Arch.Core.Common.dll",

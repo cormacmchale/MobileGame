@@ -35,6 +35,15 @@
           "lib/netstandard2.0/Newtonsoft.Json.dll": {}
         }
       },
+      "Plugin.DeviceSensors/1.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Plugin.DeviceSensors.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Plugin.DeviceSensors.dll": {}
+        }
+      },
       "Troschuetz.Random/4.3.0": {
         "type": "package",
         "compile": {
@@ -246,6 +255,30 @@
         "newtonsoft.json.nuspec"
       ]
     },
+    "Plugin.DeviceSensors/1.0.0": {
+      "sha512": "mdE+jw9s3N2/nzO3t5hlpzZLIX0ebo0BemWvwAZ8IxtBaru82sPncIXd5wd/TdW5QeH76jeC6o3tbLCjPDpASg==",
+      "type": "package",
+      "path": "plugin.devicesensors/1.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/monoandroid80/Plugin.DeviceSensors.dll",
+        "lib/monoandroid80/Plugin.DeviceSensors.xml",
+        "lib/netstandard1.0/Plugin.DeviceSensors.dll",
+        "lib/netstandard1.0/Plugin.DeviceSensors.xml",
+        "lib/netstandard2.0/Plugin.DeviceSensors.dll",
+        "lib/netstandard2.0/Plugin.DeviceSensors.xml",
+        "lib/tizen40/Plugin.DeviceSensors.dll",
+        "lib/tizen40/Plugin.DeviceSensors.xml",
+        "lib/uap10.0.15063/Plugin.DeviceSensors.dll",
+        "lib/uap10.0.15063/Plugin.DeviceSensors.pri",
+        "lib/uap10.0.15063/Plugin.DeviceSensors.xml",
+        "lib/xamarinios10/Plugin.DeviceSensors.dll",
+        "lib/xamarinios10/Plugin.DeviceSensors.xml",
+        "plugin.devicesensors.1.0.0.nupkg.sha512",
+        "plugin.devicesensors.nuspec"
+      ]
+    },
     "Troschuetz.Random/4.3.0": {
       "sha512": "MwfN3xAyJGGLPyFO0W7cq+jZ7RvSQWs93Jr+QWnLETC/FigyvrBp/NSRs/UpSmkmc03V0tyngppwxbA/3qmgQg==",
       "type": "package",
@@ -420,6 +453,7 @@
     ".NETStandard,Version=v2.0": [
       "NETStandard.Library >= 2.0.3",
       "Newtonsoft.Json >= 12.0.1",
+      "Plugin.DeviceSensors >= 1.0.0",
       "Troschuetz.Random >= 4.3.0",
       "Xamarin.Forms >= 3.4.0.1008975"
     ]
@@ -474,6 +508,10 @@
           "Newtonsoft.Json": {
             "target": "Package",
             "version": "[12.0.1, )"
+          },
+          "Plugin.DeviceSensors": {
+            "target": "Package",
+            "version": "[1.0.0, )"
           },
           "Troschuetz.Random": {
             "target": "Package",
