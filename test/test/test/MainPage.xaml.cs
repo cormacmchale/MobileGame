@@ -18,6 +18,7 @@ namespace test
         //10 milliseconds is optimal for player movement speed
         Timer movePlayer = new Timer(35);
         Timer collisionTimer = new Timer(30);
+        Timer sensorTimer = new Timer(50);
         Timer translateTimer = new Timer(3000);
         //variables for movement and collision detection
         static int movementX = 0;
@@ -49,6 +50,11 @@ namespace test
             //playerShip.TranslationX = 20;
             //playerShip.TranslationY = 20;
 
+            //set up timers
+            movePlayer.Elapsed += T_Elapsed1;
+            collisionTimer.Elapsed += T_Elapsed2;
+            translateTimer.Elapsed += TranslateTimer_Elapsed;
+            sensorTimer.Elapsed += SensorTimer_Elapsed;
 
 
             if (CrossDeviceSensors.Current.Accelerometer.IsSupported)
@@ -59,18 +65,16 @@ namespace test
                 };
                 CrossDeviceSensors.Current.Accelerometer.StartReading();
                 //log reading from accelerometer for testing
-                VectorReading n = CrossDeviceSensors.Current.Accelerometer.LastReading;
-                Debug.Write(n.X);
+                //VectorReading n = CrossDeviceSensors.Current.Accelerometer.LastReading;
+                //Debug.Write(n.X);
+                sensorTimer.Start();
             }
 
-
+            //this now added in xaml
             //Main.Children.Add(space);
             Main.Children.Add(playerShip);
 
-            //set up timers
-            movePlayer.Elapsed += T_Elapsed1;
-            collisionTimer.Elapsed += T_Elapsed2;
-            translateTimer.Elapsed += TranslateTimer_Elapsed;
+
             //add all images first
 
                     //addImages();
@@ -79,6 +83,8 @@ namespace test
             addbuttons();
             //playerScore();
         }
+
+
 
         private void playerScore()
         {
@@ -219,6 +225,7 @@ namespace test
             gameObjects.Add(asteroid);
             Main.Children.Add(asteroid);
         }
+        #region - Timer invoke on main thread
         private void TranslateTimer_Elapsed(object sender, ElapsedEventArgs e)
         {
             int newScore = Convert.ToInt32(score.Score);
@@ -227,9 +234,8 @@ namespace test
             //Debug.Write("move");
             Device.BeginInvokeOnMainThread( () =>
             {
-                //move the pieces
+                //move the gameObjects
                 MoveGameObjects();
-                //detect collisions
             }
             );
         }
@@ -237,7 +243,7 @@ namespace test
         {
             Device.BeginInvokeOnMainThread(() =>
             {
-                //move the pieces
+                //move the player
                 movingGame();
             }
             );
@@ -252,6 +258,18 @@ namespace test
             }
             );
         }
+        private void SensorTimer_Elapsed(object sender, ElapsedEventArgs e)
+        {
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                //detect collisions
+                moveShipWithSensor();
+            }
+            );
+        }
+        #endregion
+
+
         #region - timer Methods
         private void collisionDetection()
         {
@@ -276,6 +294,25 @@ namespace test
                     }
                 }
            }
+        }
+        //fired in the sensor reading timer
+        private void moveShipWithSensor()
+        {
+            VectorReading n = CrossDeviceSensors.Current.Accelerometer.LastReading;
+            tiltMoveShip(n.X);
+        }
+        //gets the value from the reading and alters movement accordingly
+        private void tiltMoveShip(double X)
+        {
+            //will have to add Large switch statement here for movement??
+            //will research better way to do this
+            Debug.WriteLine(X);
+            if (X > 6)
+            {
+                movePlayer.Start();
+                movementX = -2;
+                movementY = 0;
+            }
         }
 
         private async void changePage()
@@ -303,6 +340,7 @@ namespace test
             playerShip.TranslationY += movementY;
         }
         #endregion
+
         #region button press logic (translation and rotation)
         private void UPMOVE(object sender, EventArgs e)
         {
@@ -328,7 +366,6 @@ namespace test
         private void RIGHT(object sender, EventArgs e)
         {
             //addImages();
-            movePlayer.Start();
             playerShip.RotationY = 12;
             playerShip.Rotation = 0;
             movementX = 2;
