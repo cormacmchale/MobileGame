@@ -82,7 +82,7 @@ namespace test
         //not implemented at the moment
         //after movement is finished
         //multiple calls of this method will increase difficulty
-        private void addImages()
+        private void addGameObject()
         {
             //throw new NotImplementedException();
             Image asteroid = new Image();
@@ -90,8 +90,14 @@ namespace test
             //asteroid.Scale = .5;
             //asteroid.SetValue(Grid.RowProperty, 1);
             //asteroid.SetValue(Grid.ColumnProperty, 1);
-            asteroid.TranslationX = 300;
-            asteroid.TranslationY = 300;
+            //get random starting point away from the player
+            int playerAvoidX = (int)playerShip.TranslationX + 50;
+            int playerAvoidY = (int)playerShip.TranslationY + 50;
+            int playerAvoidX2 = (int)playerShip.TranslationX + 200;
+            int playerAvoidY2 = (int)playerShip.TranslationY + 200;
+            Random asteroidStartingPoint = new Random();
+            asteroid.TranslationX = asteroidStartingPoint.Next(playerAvoidX, playerAvoidX2);
+            asteroid.TranslationY = asteroidStartingPoint.Next(playerAvoidY, playerAvoidY2);
             gameObjects.Add(asteroid);
             Main.Children.Add(asteroid);
         }
@@ -219,12 +225,13 @@ namespace test
         #region - Timer invoke on main thread
         private void TranslateTimer_Elapsed(object sender, ElapsedEventArgs e)
         {
-            int newScore = Convert.ToInt32(score.Score);
-            newScore++;
-            score.Score = newScore.ToString();
+
             //Debug.Write("move");
             Device.BeginInvokeOnMainThread( () =>
             {
+                //every move increase difficulty
+                //add the game objects
+                addGameObject();
                 //move the gameObjects
                 MoveGameObjects();
             }
@@ -351,7 +358,7 @@ namespace test
                 Random r = new Random();
                 int moveX = r.Next(-200, 200);
                 int moveY = r.Next(-200, 200);
-                GameObject.TranslateTo(moveX, moveY, 1700);
+                GameObject.TranslateTo(moveX, moveY, 3000);
             }
         }
         private void movingGame()
