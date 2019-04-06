@@ -290,8 +290,6 @@ namespace test
                 //error handling for android??
                 catch
                 {
-                    //Debug.WriteLine(distance);
-                    Debug.WriteLine("Collision");
                     //stop both timers - android issue maybe?
                     translateTimer.Stop();
                     collisionTimer.Stop();
@@ -304,20 +302,23 @@ namespace test
         private void moveShipWithSensor()
         {
             VectorReading n = CrossDeviceSensors.Current.Accelerometer.LastReading;
-            tiltMoveShip(n.X);
+            tiltMoveShip(n.X, n.Y);
         }
         //gets the value from the reading and alters movement accordingly
-        private void tiltMoveShip(double X)
+        private void tiltMoveShip(double X, double Y)
         {
-            //will have to add Large switch statement here for movement??
             //will research better way to do this
-            //Debug.WriteLine(X);
-            if (X > 6)
-            {
-                movementX = -2;
-                movementY = 0;
-                addImages();
-            }
+            //Debug.WriteLine(Y);
+            //left
+            if (X>4){movementX = -2;movementY = 0;} 
+            //right
+            if (X<-4){movementX = 2;movementY = 0;}
+            //Down
+            if (Y>4){movementY = 2;movementX = 0;}
+            //UP
+            //this needs to be closer to 0 to feel more intuitive
+            if (Y<-3){movementY = -2;movementX = 0;}
+            //need to add other movements
         }
 
         private async void changePage()
