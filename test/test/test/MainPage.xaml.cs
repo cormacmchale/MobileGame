@@ -91,10 +91,10 @@ namespace test
             //asteroid.SetValue(Grid.RowProperty, 1);
             //asteroid.SetValue(Grid.ColumnProperty, 1);
             //get random starting point away from the player
-            int playerAvoidX = (int)playerShip.TranslationX + 50;
-            int playerAvoidY = (int)playerShip.TranslationY + 50;
-            int playerAvoidX2 = (int)playerShip.TranslationX + 200;
-            int playerAvoidY2 = (int)playerShip.TranslationY + 200;
+            int playerAvoidX = (int)playerShip.TranslationX + 200;
+            int playerAvoidY = (int)playerShip.TranslationY + 200;
+            int playerAvoidX2 = (int)playerShip.TranslationX + 300;
+            int playerAvoidY2 = (int)playerShip.TranslationY + 300;
             Random asteroidStartingPoint = new Random();
             asteroid.TranslationX = asteroidStartingPoint.Next(playerAvoidX, playerAvoidX2);
             asteroid.TranslationY = asteroidStartingPoint.Next(playerAvoidY, playerAvoidY2);
@@ -287,6 +287,7 @@ namespace test
                             //Debug.WriteLine(distance);
                             Debug.WriteLine("Collision");
                             //stop both timers - android issue maybe?
+                            resetGame();
                             translateTimer.Stop();
                             collisionTimer.Stop();
                             //pop new page onto the stack
@@ -298,10 +299,11 @@ namespace test
                 catch
                 {
                     //stop both timers - android issue maybe?
-                    translateTimer.Stop();
-                    collisionTimer.Stop();
+                    //translateTimer.Stop();
+                    //collisionTimer.Stop();
                     //pop new page onto the stack
-                    changePage();
+                    //changePage();
+                    //keep android happy
                 }
            }
         }
@@ -317,6 +319,12 @@ namespace test
             //Debug.WriteLine(Y);
             //tidied up - for Up Y has to be a bit smaller to feel more intuitive
             //if user tilts extreme than that stops moevment in the opposite direction
+            //Debug.WriteLine(playerShip.TranslationX);
+            //keep player on screen
+            if (playerShip.TranslationX < -20)
+            { playerShip.TranslationX = 420;}
+            if (playerShip.TranslationX > 430)
+            { playerShip.TranslationX = -10;}
             //left
             if (X > 4)
             { movementX = -2; };
