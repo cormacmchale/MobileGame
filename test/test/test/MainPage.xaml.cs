@@ -307,18 +307,32 @@ namespace test
         //gets the value from the reading and alters movement accordingly
         private void tiltMoveShip(double X, double Y)
         {
-            //will research better way to do this
             //Debug.WriteLine(Y);
+            //tidied up - for Up Y has to be a bit smaller to feel more intuitive
+            //if user tilts extreme than that stops moevment in the opposite direction
             //left
-            if (X>4){movementX = -2;movementY = 0;} 
+            if (X > 4)
+            { movementX = -2; };
+            if (X > 7)
+            { movementY = 0; };
             //right
-            if (X<-4){movementX = 2;movementY = 0;}
+            if (X < -4)
+            { movementX = 2; };
+            if (X < -7)
+            { movementY = 0; };
             //Down
-            if (Y>4){movementY = 2;movementX = 0;}
+            if (Y > 4)
+            { movementY = 2;};
+            if (Y > 7)
+            { movementX = 0; };
             //UP
-            //this needs to be closer to 0 to feel more intuitive
-            if (Y<-3){movementY = -2;movementX = 0;}
+            if (Y < -3)
+            { movementY = -2;};
+            if (Y < -6)
+            { movementX = 0; };
             //need to add other movements
+            //if (X > 4 && Y > 4)
+            //{ movementX = -2; movementY = -2; };
         }
 
         private async void changePage()
