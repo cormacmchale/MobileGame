@@ -10,6 +10,7 @@ namespace test
         public App()
         {
             InitializeComponent();
+            //make a stack for page navigation
             MainPage = new NavigationPage(new MainPage());
         }
 

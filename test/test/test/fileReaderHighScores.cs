@@ -9,6 +9,7 @@ namespace test
 {
     class fileReaderHighScores
     {
+        //Newtonsoft.Json utilized here
         public static List<scorePosition> readInHighScoreList()
         {
             //try saved data first... if not then read local file
@@ -21,7 +22,6 @@ namespace test
                 using (var reader = new StreamReader(filename))
                 {
                     fileString = reader.ReadToEnd();
-                    // need json library
                 }
             }
             catch
@@ -32,23 +32,19 @@ namespace test
                 using (var reader = new StreamReader(stream))
                 {
                     fileString = reader.ReadToEnd();
-                    //convert to list of classes (parse java)
                 }
             }
+            //convert to list of scoreposition/ score board
             list = JsonConvert.DeserializeObject<List<scorePosition>>(fileString);
             return list;
         }
         //add method for saving data also
-
         public static void SaveHighScoreList(List<scorePosition> saveList)
         {
-            // need the path to the file
             string path = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
             string filename = Path.Combine(path, "highScores.txt");
-            // use a stream writer to write the list
             using (var writer = new StreamWriter(filename, false))
             {
-                // stringify equivalent
                 string jsonText = JsonConvert.SerializeObject(saveList);
                 writer.WriteLine(jsonText);
             }
