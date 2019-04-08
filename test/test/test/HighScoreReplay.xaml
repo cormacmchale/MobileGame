@@ -7,7 +7,7 @@
         <DataTemplate x:Key="ScoreTemplate">
             <ViewCell>
                 <StackLayout Margin="2">
-                    <StackLayout Orientation="Horizontal" Margin="2, 1">
+                    <StackLayout Orientation="Horizontal" Margin="2, 1" HorizontalOptions="CenterAndExpand">
                         <Label Text="Score: " />
                         <Label Text="{Binding Path=Score}" />
                     </StackLayout>
@@ -19,7 +19,7 @@
     <ContentPage.Content>
 
         <Grid x:Name="Main">
-            <ListView x:Name="scoreBoard" BindingContext="{Binding Path=highScore}" ItemTemplate="{StaticResource ScoreTemplate}"/>
+            <ListView x:Name="scoreBoard" BindingContext="{Binding Path=highScore}" ItemTemplate="{StaticResource ScoreTemplate}" />
         </Grid>
    
     </ContentPage.Content>

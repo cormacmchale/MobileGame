@@ -20,7 +20,7 @@ namespace test
             setUpScoreBoard(Score);
 		}
         //implementing on disappearing for saving to file
-        //after that if read from correct file is used properly than this is finished
+        //after that if read from correct file is used properly than this is finished999
         private void readScoresFromFile()
         {
             //Debug.Write("In Method \n");
@@ -35,6 +35,7 @@ namespace test
             newScore.Score = score;
             highScore.Add(newScore);
             highScore.Sort();
+            fileReaderHighScores.SaveHighScoreList(highScore);
             //ListView scores = new ListView();
             scoreBoard.ItemsSource = highScore;
             //save scores before leaving
