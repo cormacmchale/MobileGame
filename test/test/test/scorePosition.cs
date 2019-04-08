@@ -6,11 +6,11 @@ using System.Text;
 
 namespace test
 {
-    class scorePosition : INotifyPropertyChanged
+    class scorePosition : INotifyPropertyChanged, IComparable
     {
         public event PropertyChangedEventHandler PropertyChanged;
-        private string _score;
-        public string Score
+        private int _score;
+        public int Score
         {
                     get
                     {
@@ -29,5 +29,11 @@ namespace test
             PropertyChanged?.Invoke(this,
                 new PropertyChangedEventArgs(propertyName));
         }
+
+        public int CompareTo(object obj)
+        {
+            return Score.CompareTo(((scorePosition)obj).Score)*-1;
+        }
     }
+
 }

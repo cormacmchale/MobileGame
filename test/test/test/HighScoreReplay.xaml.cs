@@ -30,9 +30,9 @@ namespace test
         {
             ///Debug.WriteLine(score);
             scorePosition newScore = new scorePosition();
-            newScore.Score = score.ToString();
+            newScore.Score = score;
             highScore.Add(newScore);
-            //highScore.Sort();
+            highScore.Sort();
             //ListView scores = new ListView();
             scoreBoard.ItemsSource = highScore;
             //save scores before leaving
