@@ -19,6 +19,8 @@ namespace test
             readScoresFromFile();
             setUpScoreBoard(Score);
 		}
+        //implementing on disappearing for saving to file
+        //after that if read from correct file is used properly than this is finished
         private void readScoresFromFile()
         {
             //Debug.Write("In Method \n");

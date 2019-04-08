@@ -74,6 +74,8 @@ namespace test
             addbuttons();
             //databinding
             playerScore();
+            //only for testing
+            //addGameObject();
         }
         //implement Data Binding here
         private void playerScore()
@@ -237,8 +239,8 @@ namespace test
             {
                 //every move increase difficulty
                 //add the game objects
-                        //remove for the moment- will add in later
-                        //addGameObject();
+                //remove for the moment- will add in later
+                addGameObject();
                 //move the gameObjects
                 MoveGameObjects();
             }
@@ -328,18 +330,23 @@ namespace test
             //tidied up - for Up Y has to be a bit smaller to feel more intuitive
             //if user tilts extreme than that stops moevment in the opposite direction
             //Debug.WriteLine(playerShip.TranslationX);
-            Debug.WriteLine(playerShip.TranslationY);
+            //Debug.WriteLine(playerShip.TranslationY);
+
+            #region- keep player on screen too slow
+            //too slow
             //keep player on screen
             //x position
-            if (playerShip.TranslationX < -20)
-            { playerShip.TranslationX = 420;}
-            if (playerShip.TranslationX > 430)
-            { playerShip.TranslationX = -10;}
+            //if (playerShip.TranslationX < -20)
+            //{ playerShip.TranslationX = 420;}
+            //if (playerShip.TranslationX > 430)
+            //{ playerShip.TranslationX = -10;}
             //y position
-            if (playerShip.TranslationY < -70)
-            { playerShip.TranslationY = 760; }
-            if (playerShip.TranslationY > 770)
-            { playerShip.TranslationY = -60; }
+            //if (playerShip.TranslationY < -70)
+            //{ playerShip.TranslationY = 760; }
+            //if (playerShip.TranslationY > 770)
+            //{ playerShip.TranslationY = -60; }
+            #endregion
+
             //left
             if (X > 4)
             { movementX = -2; };
@@ -379,8 +386,8 @@ namespace test
             {
                 //Debug.Write("move");
                 Random r = new Random();
-                int moveX = r.Next(-200, 200);
-                int moveY = r.Next(-200, 200);
+                int moveX = r.Next(0, 400);
+                int moveY = r.Next(0, 700);
                 GameObject.TranslateTo(moveX, moveY, 3000);
             }
         }
@@ -390,34 +397,34 @@ namespace test
             playerShip.TranslationY += movementY;
         }
         #endregion
-
+        //rotation moved for the moment
         #region button press logic (translation and rotation)
         private void UPMOVE(object sender, EventArgs e)
         {
-            playerShip.RotationX = 10;
-            playerShip.Rotation = 0;    
+            //playerShip.RotationX = 10;
+            //playerShip.Rotation = 0;    
             movementY = -2;
             movementX = 0;
         }
         private void DOWNMOVE(object sender, EventArgs e)
         {
-            playerShip.RotationX = -10;
-            playerShip.Rotation = 0;
+            //playerShip.RotationX = -10;
+            //playerShip.Rotation = 0;
             movementY = +2;
             movementX = 0;
         }
         private void LEFT(object sender, EventArgs e)
         {
-            playerShip.RotationY = -12;
-            playerShip.Rotation = 0;
+            //playerShip.RotationY = -12;
+            //playerShip.Rotation = 0;
             movementX = -2;
             movementY = 0;
         }
         private void RIGHT(object sender, EventArgs e)
         {
             //addImages();
-            playerShip.RotationY = 12;
-            playerShip.Rotation = 0;
+            //playerShip.RotationY = 12;
+            //playerShip.Rotation = 0;
             movementX = 2;
             movementY = 0;
         }
@@ -430,26 +437,26 @@ namespace test
         }
         private void UPLEFTMOVE(object sender, EventArgs e)
         {
-            playerShip.Rotation = -15;
+            //playerShip.Rotation = -15;
             movementX = -2;
             movementY = -2;
         }
         private void DOWNLEFTMOVE(object sender, EventArgs e)
         {
-            playerShip.Rotation = -15;
+            //playerShip.Rotation = -15;
             movementX = -2;
             movementY = +2;
         }
 
         private void UPRIGHTMOVE(object sender, EventArgs e)
         {
-            playerShip.Rotation = 15;
+            //playerShip.Rotation = 15;
             movementX = +2;
             movementY = -2;
         }
         private void DOWNRIGHTMOVE(object sender, EventArgs e)
         {
-            playerShip.Rotation = 15;
+            //playerShip.Rotation = 15;
             movementX = +2;
             movementY = +2;
         }
