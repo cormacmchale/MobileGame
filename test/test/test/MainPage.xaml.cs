@@ -72,12 +72,13 @@ namespace test
 
             //add buttons
             addbuttons();
-            //databinding Fail
+            //databinding
             playerScore();
         }
         //implement Data Binding here
         private void playerScore()
         {
+            //this now works
             scoreTracker.BindingContext = score;
         }
 
@@ -236,7 +237,8 @@ namespace test
             {
                 //every move increase difficulty
                 //add the game objects
-                addGameObject();
+                        //remove for the moment- will add in later
+                        //addGameObject();
                 //move the gameObjects
                 MoveGameObjects();
             }
@@ -326,11 +328,18 @@ namespace test
             //tidied up - for Up Y has to be a bit smaller to feel more intuitive
             //if user tilts extreme than that stops moevment in the opposite direction
             //Debug.WriteLine(playerShip.TranslationX);
+            Debug.WriteLine(playerShip.TranslationY);
             //keep player on screen
+            //x position
             if (playerShip.TranslationX < -20)
             { playerShip.TranslationX = 420;}
             if (playerShip.TranslationX > 430)
             { playerShip.TranslationX = -10;}
+            //y position
+            if (playerShip.TranslationY < -70)
+            { playerShip.TranslationY = 760; }
+            if (playerShip.TranslationY > 770)
+            { playerShip.TranslationY = -60; }
             //left
             if (X > 4)
             { movementX = -2; };
