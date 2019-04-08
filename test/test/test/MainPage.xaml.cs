@@ -67,13 +67,18 @@ namespace test
 
             //unsure as to why this wont fill page
             //this now added in xaml
-            //Main.Children.Add(space);
+            //Main.Children.Add(space); 
             Main.Children.Add(playerShip);
 
             //add buttons
             addbuttons();
             //databinding Fail
-            //playerScore();
+            playerScore();
+        }
+        //implement Data Binding here
+        private void playerScore()
+        {
+            scoreTracker.BindingContext = score;
         }
 
         //method will create and add a game object that looks like an asteroid to a list
@@ -243,6 +248,7 @@ namespace test
             {
                 //move the player
                 movingGame();
+                score.Score++;
             }
             );
             //CoreDispatcher.

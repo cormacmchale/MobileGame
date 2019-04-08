@@ -10,8 +10,9 @@
         
     </ContentPage.Resources>
     <StackLayout x:Name="outsideGrid" Orientation="Vertical">
-        <StackLayout Orientation="Horizontal">
+        <StackLayout BindingContext="{Binding Path=score}" x:Name="scoreTracker" Orientation="Horizontal">
             <Label Text="The Final Frontier" HorizontalOptions="CenterAndExpand" Margin="2"/>
+            <Label Text ="{Binding Path=Score}" HorizontalOptions="CenterAndExpand" Margin="2"/>
         </StackLayout>
         <Grid x:Name="Main" Margin="2">
             <Grid.RowDefinitions>
