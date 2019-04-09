@@ -32,7 +32,12 @@ namespace test
         //main player and background
         Image playerShip = new Image();
         //this not working as intended
-        Image space = new Image();
+        Image space = new Image
+        {
+            Aspect = Aspect.AspectFill,
+            VerticalOptions = LayoutOptions.FillAndExpand,
+            HorizontalOptions = LayoutOptions.FillAndExpand         
+        };
         #endregion
 
         public MainPage()
@@ -44,6 +49,9 @@ namespace test
         {
             //add player image to game
             playerShip.Source = getImage.AddImage("player.gif");
+            space.Source = getImage.AddImage("backGround.png");
+            space.SetValue(Grid.ColumnSpanProperty, 9);
+            space.SetValue(Grid.RowSpanProperty, 9);
 
             //set up timers
             movePlayer.Elapsed += T_Elapsed1;
@@ -67,7 +75,7 @@ namespace test
 
             //unsure as to why this wont fill page
             //this now added in xaml
-            //Main.Children.Add(space); 
+            Main.Children.Add(space); 
             Main.Children.Add(playerShip);
 
             //add buttons

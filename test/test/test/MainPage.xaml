@@ -10,10 +10,14 @@
         
     </ContentPage.Resources>
     <StackLayout x:Name="outsideGrid" Orientation="Vertical">
+        
+        
         <StackLayout BindingContext="{Binding Path=score}" x:Name="scoreTracker" Orientation="Horizontal">
             <Label Text="The Final Frontier" HorizontalOptions="CenterAndExpand" Margin="2"/>
             <Label Text ="{Binding Path=Score}" HorizontalOptions="CenterAndExpand" Margin="2"/>
         </StackLayout>
+        
+        
         <Grid x:Name="Main" Margin="2">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
@@ -37,7 +41,6 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Image Source="newSpace.jpg" Aspect="AspectFit" Grid.ColumnSpan="9" Grid.RowSpan="9" Grid.Row="0" Grid.Column="0"/>
         </Grid>
     </StackLayout>
 </ContentPage>
