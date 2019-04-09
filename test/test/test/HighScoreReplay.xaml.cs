@@ -28,6 +28,7 @@ namespace test
         }
         private void setUpScoreBoard(int score)
         {
+            Debug.WriteLine(score);
             //get the score from the main page
             scorePosition newScore = new scorePosition();
             //save it into a score object
@@ -36,6 +37,10 @@ namespace test
             highScore.Add(newScore);
             //sort the list for user to see highest scores
             highScore.Sort();
+            //not working willhave to revisit
+            //only display top 5 score
+            //remove elements from index 4 to the last index
+            highScore.RemoveRange(4,highScore.Count-5);
             //save scores to local storage
             fileReaderHighScores.SaveHighScoreList(highScore);
             //ListView scores = new ListView();

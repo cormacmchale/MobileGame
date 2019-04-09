@@ -47,11 +47,19 @@ namespace test
         }
         private void InitilizeGame()
         {
-            //add player image to game
+            //add player image and background to game
+            //needs to be added before buttons
             playerShip.Source = getImage.AddImage("player.gif");
             space.Source = getImage.AddImage("backGround.png");
             space.SetValue(Grid.ColumnSpanProperty, 9);
             space.SetValue(Grid.RowSpanProperty, 9);
+            Main.Children.Add(space);
+            Main.Children.Add(playerShip);
+
+            //unsure as to why this wont fill page - issue fixed
+            //this now added in xaml
+            Main.Children.Add(space);
+            Main.Children.Add(playerShip);
 
             //set up timers
             movePlayer.Elapsed += T_Elapsed1;
@@ -59,27 +67,41 @@ namespace test
             translateTimer.Elapsed += TranslateTimer_Elapsed;
             sensorTimer.Elapsed += SensorTimer_Elapsed;
 
-            //if the accelermoter is available then add the property changed event and start reading.. also start the timer to change movement
-            if (CrossDeviceSensors.Current.Accelerometer.IsSupported)
+            //set up envoirement to play Games
+            //always add buttons in case no accelermoeter or device is different from android or UWP
+            switch (Device.RuntimePlatform)
             {
-                CrossDeviceSensors.Current.Accelerometer.OnReadingChanged += (s, a) => {
-                    //Debug.WriteLine(s);
-                    //Debug.WriteLine(a);
-                };
-                CrossDeviceSensors.Current.Accelerometer.StartReading();
-                //log reading from accelerometer for testing
-                //VectorReading n = CrossDeviceSensors.Current.Accelerometer.LastReading;
-                //Debug.Write(n.X);
-                sensorTimer.Start();
+                case Device.Android:
+                    //if the accelermoter is available then add the property changed event and start reading.. also start the timer to change movement
+                    if (CrossDeviceSensors.Current.Accelerometer.IsSupported)
+                    {
+                        CrossDeviceSensors.Current.Accelerometer.OnReadingChanged += (s, a) =>
+                        {
+                            //Debug.WriteLine(s);
+                            //Debug.WriteLine(a);
+                        };
+                        CrossDeviceSensors.Current.Accelerometer.StartReading();
+                        //log reading from accelerometer for testing
+                        //VectorReading n = CrossDeviceSensors.Current.Accelerometer.LastReading;
+                        //Debug.Write(n.X);
+                        sensorTimer.Start();
+                    }
+                    else
+                    {
+                        //add buttons just in case
+                        addbuttons();
+                    }
+                    break;
+                case Device.UWP:
+                    //add buttons for UWP users
+                    addbuttons();
+                    break;
+                default:
+                    //add buttons just in case
+                    addbuttons();
+                    break;
             }
 
-            //unsure as to why this wont fill page
-            //this now added in xaml
-            Main.Children.Add(space); 
-            Main.Children.Add(playerShip);
-
-            //add buttons
-            addbuttons();
             //databinding
             playerScore();
             //only for testing
@@ -124,30 +146,32 @@ namespace test
         protected override void OnAppearing()
         {
             base.OnAppearing();
+            //reset Game function
+            //gets rid of objects without breaking the game
+            resetGame();
             //loop through collection of images and perform collision detect between the player and those object
             collisionTimer.Start();
             //loop through colection of images and perform movement
             translateTimer.Start();
             //start allowing the player to move
             movePlayer.Start();
+            //reset the score here - not working at the moment
+            score.Score = 0;
         }
         //when the page goes out of scope in terms of UI
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
             movePlayer.Stop();
-            //reset Game function
-            //gets rid of objects without breaking the game
-            resetGame();
         }
         //this method should clear all the game objects and reset the player to where they were in main page
         //maybe runs better when the page appears
         private void resetGame()
         {
-            playerShip.TranslationX = 0;
-            playerShip.TranslationY = 0;
             movementX = 0;
             movementY = 0;
+            playerShip.TranslationX = 0;
+            playerShip.TranslationY = 0;
             //make all of the objects invisible
             foreach (var GameObject in gameObjects)
             {
@@ -384,7 +408,7 @@ namespace test
         {
             //pass score into save file
             //new page should read file
-            await Navigation.PushAsync(new HighScoreReplay(Convert.ToInt32(score.Score)));
+            await Navigation.PushAsync(new HighScoreReplay(score.Score));
         }
 
         private void MoveGameObjects()
