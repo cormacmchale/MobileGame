@@ -8,8 +8,7 @@
             <ViewCell>
                 <StackLayout Margin="2">
                     <StackLayout Orientation="Horizontal" Margin="2, 1" HorizontalOptions="CenterAndExpand">
-                        <Label Text="Score: " />
-                        <Label Text="{Binding Path=Score}" />
+                        <Label Text="{Binding Path=Score}"/>
                     </StackLayout>
                 </StackLayout>
             </ViewCell>
@@ -18,8 +17,12 @@
 
     <ContentPage.Content>
 
-        <Grid x:Name="Main">
-            <ListView x:Name="scoreBoard" BindingContext="{Binding Path=highScore}" ItemTemplate="{StaticResource ScoreTemplate}" />
+        <Grid x:Name="Main" BackgroundColor="Black">
+            <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="AntiqueWhite" Margin="50">
+                <Label HorizontalOptions="CenterAndExpand" Text="High Scores"/>
+                <Label HorizontalOptions="CenterAndExpand" Text="==========="/>
+                <ListView x:Name="scoreBoard" BindingContext="{Binding Path=highScore}" ItemTemplate="{StaticResource ScoreTemplate}" />
+            </StackLayout>
         </Grid>
    
     </ContentPage.Content>
