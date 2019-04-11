@@ -39,13 +39,14 @@ namespace test
         {
                 //not working at the moment adds on top of xaml
                 //same as previous pages backGround for nice UI
-                ///space.Source = getImage.AddImage("backGround.png");
+                //space.Source = getImage.AddImage("backGround.png");
                 //space.SetValue(Grid.ColumnSpanProperty, 9);
                 //space.SetValue(Grid.RowSpanProperty, 9);
                 //Main.Children.Add(space);
                 //unsure as to why this wont fill page - issue fixed
                 //this now added in xaml
                 //Main.Children.Add(space);
+
             //get the score from the main page
             scorePosition newScore = new scorePosition();
             //save it into a score object

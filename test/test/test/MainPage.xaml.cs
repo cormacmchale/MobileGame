@@ -17,10 +17,15 @@ namespace test
         private ObservableCollection<Image> gameObjects = new ObservableCollection<Image>();
         //keep track of score.. required for data binding
         scorePosition score = new scorePosition();
+        //timers used to make the game dynamic
         //10 milliseconds is optimal for player movement speed
+        //every time this fires the players position is updated
         Timer movePlayer = new Timer(35);
+        //collision detection is run everytime this timer fires
         Timer collisionTimer = new Timer(30);
+        //this is fired to track the orientation of the phone
         Timer sensorTimer = new Timer(50);
+        //this moves all of the game objects randomly
         Timer translateTimer = new Timer(3000);
         //variables for movement and collision detection
         static int movementX = 0;
@@ -31,13 +36,14 @@ namespace test
         Imager getImage = new Imager();
         //main player and background
         Image playerShip = new Image();
-        //this not working as intended
         Image space = new Image
         {
             Aspect = Aspect.AspectFill,
             VerticalOptions = LayoutOptions.FillAndExpand,
             HorizontalOptions = LayoutOptions.FillAndExpand         
         };
+        //RNG for enhanced gameplay experience
+        Random r = new Random();
         #endregion
 
         public MainPage()
@@ -47,6 +53,14 @@ namespace test
         }
         private void InitilizeGame()
         {
+            UI();
+            startTimers();
+            setUpEnvoirnment();
+            playerScore();
+        }
+        #region - Game setup and UI implementation
+        private void UI()
+        {
             //add player image and background to game
             //needs to be added before buttons
             playerShip.Source = getImage.AddImage("player.gif");
@@ -55,18 +69,26 @@ namespace test
             space.SetValue(Grid.RowSpanProperty, 9);
             Main.Children.Add(space);
             Main.Children.Add(playerShip);
-
-            //unsure as to why this wont fill page - issue fixed
-            //this now added in xaml
             Main.Children.Add(space);
             Main.Children.Add(playerShip);
-
+        }
+        private void startTimers()
+        {
             //set up timers
+            //the methods added to the timers here are the methods that fire everytime the timer fires
             movePlayer.Elapsed += T_Elapsed1;
             collisionTimer.Elapsed += T_Elapsed2;
             translateTimer.Elapsed += TranslateTimer_Elapsed;
             sensorTimer.Elapsed += SensorTimer_Elapsed;
-
+        }
+        //implement Data Binding here
+        private void playerScore()
+        {
+            //binding so the player can see their score
+            scoreTracker.BindingContext = score;
+        }
+        private void setUpEnvoirnment()
+        {
             //set up envoirement to play Games
             //always add buttons in case no accelermoeter or device is different from android or UWP
             switch (Device.RuntimePlatform)
@@ -101,44 +123,28 @@ namespace test
                     addbuttons();
                     break;
             }
-
-            //databinding
-            playerScore();
-            //only for testing
-            //addGameObject();
-        }
-        //implement Data Binding here
-        private void playerScore()
-        {
-            //this now works
-            scoreTracker.BindingContext = score;
         }
 
         //method will create and add a game object that looks like an asteroid to a list
         //can just use the Image object as Game Objects
         //this method will have to be updated to maybe add images at a random location?
-        //not implemented at the moment
-        //after movement is finished
         //multiple calls of this method will increase difficulty
         private void addGameObject()
         {
-            //throw new NotImplementedException();
             Image asteroid = new Image();
             asteroid.Source = getImage.AddImage("newAsteroid.png");
-            //asteroid.Scale = .5;
-            //asteroid.SetValue(Grid.RowProperty, 1);
-            //asteroid.SetValue(Grid.ColumnProperty, 1);
             //get random starting point away from the player
-            int playerAvoidX = (int)playerShip.TranslationX + 200;
-            int playerAvoidY = (int)playerShip.TranslationY + 200;
-            int playerAvoidX2 = (int)playerShip.TranslationX + 300;
-            int playerAvoidY2 = (int)playerShip.TranslationY + 300;
+            int playerAvoidX = (int)playerShip.TranslationX + 100;
+            int playerAvoidY = (int)playerShip.TranslationY + 100;
+            int playerAvoidX2 = (int)playerShip.TranslationX + 150;
+            int playerAvoidY2 = (int)playerShip.TranslationY + 150;
             Random asteroidStartingPoint = new Random();
             asteroid.TranslationX = asteroidStartingPoint.Next(playerAvoidX, playerAvoidX2);
             asteroid.TranslationY = asteroidStartingPoint.Next(playerAvoidY, playerAvoidY2);
             gameObjects.Add(asteroid);
             Main.Children.Add(asteroid);
         }
+        #endregion
 
         #region - Onappearing and disappearing
         //runs like oninit()
@@ -155,19 +161,21 @@ namespace test
             translateTimer.Start();
             //start allowing the player to move
             movePlayer.Start();
-            //reset the score here - not working at the moment
+            //reset the score here
             score.Score = 0;
         }
         //when the page goes out of scope in terms of UI
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
+            //stop this timer as no need to continue to keep goin in the BackGround
             movePlayer.Stop();
         }
         //this method should clear all the game objects and reset the player to where they were in main page
         //maybe runs better when the page appears
         private void resetGame()
         {
+            //stop the player and move back to start position
             movementX = 0;
             movementY = 0;
             playerShip.TranslationX = 0;
@@ -183,7 +191,7 @@ namespace test
         #endregion
 
         #region- Buttons added programatically
-        //buttons here.. Won't need for the device but may need instead of
+        //buttons here.. Won't need for android, called for UWP
         //accelermoeter will now call button presses for android
         private void addbuttons()
         {
@@ -271,7 +279,6 @@ namespace test
             {
                 //every move increase difficulty
                 //add the game objects
-                //remove for the moment- will add in later
                 addGameObject();
                 //move the gameObjects
                 MoveGameObjects();
@@ -284,6 +291,7 @@ namespace test
             {
                 //move the player
                 movingGame();
+                //player score increases at the rate the timer goes off, looks good on the UI
                 score.Score++;
             }
             );
@@ -310,6 +318,7 @@ namespace test
         #endregion
 
         #region - timer Methods
+        //not very happy with this but it works as it's supposed to in terms of the UI
         private void collisionDetection()
         {
            if (gameObjects.Count > 0)
@@ -328,7 +337,8 @@ namespace test
                         {
                             //Debug.WriteLine(distance);
                             Debug.WriteLine("Collision");
-                            //stop both timers - android issue maybe?
+                            //stop both timers - android issue maybe? here for error handling
+                            //after testing this setup runs optimally
                             resetGame();
                             translateTimer.Stop();
                             collisionTimer.Stop();
@@ -349,10 +359,18 @@ namespace test
                 }
            }
         }
+
+        private async void changePage()
+        {
+            //pass score into new page
+            //new page should read file
+            await Navigation.PushAsync(new HighScoreReplay(score.Score));
+        }
         //fired in the sensor reading timer
         private void moveShipWithSensor()
         {
             VectorReading n = CrossDeviceSensors.Current.Accelerometer.LastReading;
+            //changes movement based on orientation of the phone
             tiltMoveShip(n.X, n.Y);
         }
         //gets the value from the reading and alters movement accordingly
@@ -404,23 +422,27 @@ namespace test
             //{ movementX = -2; movementY = -2; };
         }
 
-        private async void changePage()
-        {
-            //pass score into save file
-            //new page should read file
-            await Navigation.PushAsync(new HighScoreReplay(score.Score));
-        }
-
+        //loop through the objects onscreen and apply movement
+        //tweaking applied for better difficulty curve
         private void MoveGameObjects()
         {
+            //random out
+
+            //this will mean the player must be constantly alert - more rewarding experience
+            int attackPlayer = r.Next(0,(gameObjects.Count-1));
 
             foreach (var GameObject in gameObjects)
             {
                 //Debug.Write("move");
-                Random r = new Random();
-                int moveX = r.Next(0, 400);
-                int moveY = r.Next(0, 700);
-                GameObject.TranslateTo(moveX, moveY, 3000);
+                //cover game board
+                if (GameObject == gameObjects[attackPlayer])
+                {
+                    Debug.WriteLine("is this working");
+                    GameObject.TranslateTo(playerShip.TranslationX, playerShip.TranslationY, 2000);
+                }
+                int moveX = r.Next(0, 500);
+                int moveY = r.Next(0, 800);
+                GameObject.TranslateTo(playerShip.TranslationX, playerShip.TranslationY, 3000);
             }
         }
         private void movingGame()
@@ -429,7 +451,8 @@ namespace test
             playerShip.TranslationY += movementY;
         }
         #endregion
-        //rotation moved for the moment
+
+        //rotation removed for the moment to fix translation offset issue
         #region button press logic (translation and rotation)
         private void UPMOVE(object sender, EventArgs e)
         {
