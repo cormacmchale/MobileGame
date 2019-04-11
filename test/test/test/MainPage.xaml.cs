@@ -43,7 +43,9 @@ namespace test
             HorizontalOptions = LayoutOptions.FillAndExpand         
         };
         //RNG for enhanced gameplay experience
+        //used with gameObject Manipulation - instantiation and movement
         Random r = new Random();
+        Random asteroidStartingPoint = new Random();
         #endregion
 
         public MainPage()
@@ -134,13 +136,25 @@ namespace test
             Image asteroid = new Image();
             asteroid.Source = getImage.AddImage("newAsteroid.png");
             //get random starting point away from the player
-            int playerAvoidX = (int)playerShip.TranslationX + 100;
-            int playerAvoidY = (int)playerShip.TranslationY + 100;
-            int playerAvoidX2 = (int)playerShip.TranslationX + 150;
-            int playerAvoidY2 = (int)playerShip.TranslationY + 150;
-            Random asteroidStartingPoint = new Random();
-            asteroid.TranslationX = asteroidStartingPoint.Next(playerAvoidX, playerAvoidX2);
-            asteroid.TranslationY = asteroidStartingPoint.Next(playerAvoidY, playerAvoidY2);
+            //change side depending on score at that moment
+            if (score.Score % 2 == 0)
+            {
+                int playerAvoidX = (int)playerShip.TranslationX + 70;
+                int playerAvoidY = (int)playerShip.TranslationY + 70;
+                int playerAvoidX2 = (int)playerShip.TranslationX + 120;
+                int playerAvoidY2 = (int)playerShip.TranslationY + 120;
+                asteroid.TranslationX = asteroidStartingPoint.Next(playerAvoidX, playerAvoidX2);
+                asteroid.TranslationY = asteroidStartingPoint.Next(playerAvoidY, playerAvoidY2);
+            }
+            else
+            {
+                int playerAvoidX = (int)playerShip.TranslationX - 70;
+                int playerAvoidY = (int)playerShip.TranslationY - 70;
+                int playerAvoidX2 = (int)playerShip.TranslationX - 120;
+                int playerAvoidY2 = (int)playerShip.TranslationY - 120;
+                asteroid.TranslationX = asteroidStartingPoint.Next(playerAvoidX2, playerAvoidX);
+                asteroid.TranslationY = asteroidStartingPoint.Next(playerAvoidY2, playerAvoidY);
+            }
             gameObjects.Add(asteroid);
             Main.Children.Add(asteroid);
         }
@@ -426,25 +440,25 @@ namespace test
         //tweaking applied for better difficulty curve
         private void MoveGameObjects()
         {
-            //random out
-
             //this will mean the player must be constantly alert - more rewarding experience
-            int attackPlayer = r.Next(0,(gameObjects.Count-1));
+            //random object in the array will head for player directly
+            int attackPlayer = r.Next(0,(gameObjects.Count));
 
-            foreach (var GameObject in gameObjects)
-            {
-                //Debug.Write("move");
-                //cover game board
-                if (GameObject == gameObjects[attackPlayer])
+                for (int i = 0; i < gameObjects.Count - 1; i++)
                 {
-                    Debug.WriteLine("is this working");
-                    GameObject.TranslateTo(playerShip.TranslationX, playerShip.TranslationY, 2000);
+                if (gameObjects[i] == gameObjects[attackPlayer])
+                {
+                    gameObjects[i].TranslateTo(playerShip.TranslationX, playerShip.TranslationY, 2000);
                 }
-                int moveX = r.Next(0, 500);
-                int moveY = r.Next(0, 800);
-                GameObject.TranslateTo(playerShip.TranslationX, playerShip.TranslationY, 3000);
-            }
+                else
+                {
+                    int moveX = r.Next(0, 500);
+                    int moveY = r.Next(0, 800);
+                    gameObjects[i].TranslateTo(moveX, moveY, 3000);
+                }
+                }
         }
+        //apply movement to the player
         private void movingGame()
         {
             playerShip.TranslationX += movementX;
