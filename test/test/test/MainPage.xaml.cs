@@ -350,7 +350,7 @@ namespace test
                         if (distance <= 40)
                         {
                             //Debug.WriteLine(distance);
-                            Debug.WriteLine("Collision");
+                            //Debug.WriteLine("Collision");
                             //stop both timers - android issue maybe? here for error handling
                             //after testing this setup runs optimally
                             resetGame();
@@ -446,16 +446,16 @@ namespace test
 
                 for (int i = 0; i < gameObjects.Count - 1; i++)
                 {
-                if (gameObjects[i] == gameObjects[attackPlayer])
-                {
-                    gameObjects[i].TranslateTo(playerShip.TranslationX, playerShip.TranslationY, 2000);
-                }
-                else
-                {
-                    int moveX = r.Next(0, 500);
-                    int moveY = r.Next(0, 800);
-                    gameObjects[i].TranslateTo(moveX, moveY, 3000);
-                }
+                    if (gameObjects[i] == gameObjects[attackPlayer])
+                    {
+                        gameObjects[i].TranslateTo(playerShip.TranslationX, playerShip.TranslationY, 2000);
+                    }
+                    else
+                    {
+                        int moveX = r.Next(0, 500);
+                        int moveY = r.Next(0, 800);
+                        gameObjects[i].TranslateTo(moveX, moveY, 3000);
+                    }
                 }
         }
         //apply movement to the player

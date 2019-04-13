@@ -10,11 +10,9 @@
         
     </ContentPage.Resources>
     <StackLayout x:Name="outsideGrid" Orientation="Vertical">
-
-
         <StackLayout BindingContext="{Binding Path=score}" x:Name="scoreTracker" Orientation="Horizontal">
-            <Label Text="Score: " HorizontalOptions="Center" Margin="2"/>
-            <Label Text ="{Binding Path=Score}" HorizontalOptions="Start" Margin="2"/>
+            <Label Text = "Score:" HorizontalOptions="EndAndExpand" Margin="2"/>
+            <Label Text ="{Binding Path=Score}" HorizontalOptions="StartAndExpand" Margin="2"/>
         </StackLayout>
         <Grid x:Name="Main" Margin="2">
             <Grid.RowDefinitions>
