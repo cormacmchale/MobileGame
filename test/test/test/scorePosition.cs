@@ -32,7 +32,7 @@ namespace test
             PropertyChanged?.Invoke(this,
                 new PropertyChangedEventArgs(propertyName));
         }
-        //allow the list to be sorted
+        //allows the list to be sorted based on the Value of Score- Highest at the top.
         public int CompareTo(object obj)
         {
             return Score.CompareTo(((scorePosition)obj).Score)*-1;

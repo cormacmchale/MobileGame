@@ -12,16 +12,10 @@ namespace test
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class HighScoreReplay : ContentPage
 	{
-        //will contain al prevoius scores, will work like a score board
+        //this Page is esentially Just a Score Board. For the user
+
+        //will contain all prevoius scores, will work like a score board
         List<scorePosition> highScore = new List<scorePosition>();
-        //backGround
-        Image space = new Image
-        {
-            Aspect = Aspect.AspectFill,
-            VerticalOptions = LayoutOptions.FillAndExpand,
-            HorizontalOptions = LayoutOptions.FillAndExpand
-        };
-        Imager getImage = new Imager();
 
         //takes in score from main page after collision with game objects
         public HighScoreReplay (int Score)
@@ -37,16 +31,6 @@ namespace test
         }
         private void setUpScoreBoard(int score)
         {
-                //not working at the moment adds on top of xaml
-                //same as previous pages backGround for nice UI
-                //space.Source = getImage.AddImage("backGround.png");
-                //space.SetValue(Grid.ColumnSpanProperty, 9);
-                //space.SetValue(Grid.RowSpanProperty, 9);
-                //Main.Children.Add(space);
-                //unsure as to why this wont fill page - issue fixed
-                //this now added in xaml
-                //Main.Children.Add(space);
-
             //get the score from the main page
             scorePosition newScore = new scorePosition();
             //save it into a score object

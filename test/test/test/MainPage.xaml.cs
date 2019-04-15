@@ -18,7 +18,7 @@ namespace test
         //keep track of score.. required for data binding
         scorePosition score = new scorePosition();
         //timers used to make the game dynamic
-        //10 milliseconds is optimal for player movement speed
+        //10 milliseconds is optimal for player movement speed (35 is less dodgy)
         //every time this fires the players position is updated
         Timer movePlayer = new Timer(35);
         //collision detection is run everytime this timer fires
@@ -30,12 +30,15 @@ namespace test
         //variables for movement and collision detection
         static int movementX = 0;
         static int movementY = 0;
+        //all objects working off one variable - this works
         static double distance = 0;
         //class for retrieving images for whatever object needs and image
         //progamatically useful and nice to experiemnt with c# code
         Imager getImage = new Imager();
         //main player and background
         Image playerShip = new Image();
+        //these options will make the png stretch over the grid fully
+        //regardless of platform- much nicer for the UI
         Image space = new Image
         {
             Aspect = Aspect.AspectFill,
@@ -60,11 +63,12 @@ namespace test
             setUpEnvoirnment();
             playerScore();
         }
+
         #region - Game setup and UI implementation
         private void UI()
         {
             //add player image and background to game
-            //needs to be added before buttons
+            //needs to be added before buttons (UWP)
             playerShip.Source = getImage.AddImage("player.gif");
             space.Source = getImage.AddImage("backGround.png");
             space.SetValue(Grid.ColumnSpanProperty, 9);
@@ -115,7 +119,7 @@ namespace test
                         //add buttons just in case
                         addbuttons();
                     }
-                    break;
+                        break;
                 case Device.UWP:
                     //add buttons for UWP users
                     addbuttons();
@@ -184,6 +188,17 @@ namespace test
             base.OnDisappearing();
             //stop this timer as no need to continue to keep goin in the BackGround
             movePlayer.Stop();
+            //stop sensor if active
+
+            //start this timer again - this not being here may have been the reason that app was crashing out sometimes on Android
+            if (Device.RuntimePlatform == Device.Android)
+            {
+                sensorTimer.Stop();
+            }
+            //stop all timer just in case? dealing with android crashing issue
+            //seems to help, only time will tell.. testing during the day will yeild results
+            collisionTimer.Stop();
+            translateTimer.Stop();
         }
         //this method should clear all the game objects and reset the player to where they were in main page
         //maybe runs better when the page appears
@@ -331,7 +346,7 @@ namespace test
         }
         #endregion
 
-        #region - timer Methods
+        #region - Timer Methods
         //not very happy with this but it works as it's supposed to in terms of the UI
         private void collisionDetection()
         {
@@ -400,15 +415,15 @@ namespace test
             //too slow
             //keep player on screen
             //x position
-            //if (playerShip.TranslationX < -20)
-            //{ playerShip.TranslationX = 420;}
-            //if (playerShip.TranslationX > 430)
-            //{ playerShip.TranslationX = -10;}
+            if (playerShip.TranslationX < -20)
+            { playerShip.TranslationX = 420;}
+            if (playerShip.TranslationX > 430)
+            { playerShip.TranslationX = -10;}
             //y position
-            //if (playerShip.TranslationY < -70)
-            //{ playerShip.TranslationY = 760; }
-            //if (playerShip.TranslationY > 770)
-            //{ playerShip.TranslationY = -60; }
+            if (playerShip.TranslationY < -70)
+            { playerShip.TranslationY = 760; }
+            if (playerShip.TranslationY > 770)
+            { playerShip.TranslationY = -60; }
             #endregion
 
             //left

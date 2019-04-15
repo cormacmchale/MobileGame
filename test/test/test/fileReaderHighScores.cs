@@ -26,7 +26,7 @@ namespace test
             }
             catch
             {
-                //read the defaultData.txt
+                //read the highScores.txt
                 var assembly = IntrospectionExtensions.GetTypeInfo(typeof(HighScoreReplay)).Assembly;
                 Stream stream = assembly.GetManifestResourceStream("test.HighScores.highScores.txt");
                 using (var reader = new StreamReader(stream))
@@ -34,7 +34,7 @@ namespace test
                     fileString = reader.ReadToEnd();
                 }
             }
-            //convert to list of scoreposition/ score board
+            //convert to list of scoreposition - score board
             list = JsonConvert.DeserializeObject<List<scorePosition>>(fileString);
             return list;
         }

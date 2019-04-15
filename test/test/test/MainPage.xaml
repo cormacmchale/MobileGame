@@ -6,8 +6,7 @@
              x:Class="test.MainPage">
 
     <ContentPage.Resources>
-    
-        
+
     </ContentPage.Resources>
     <StackLayout x:Name="outsideGrid" Orientation="Vertical">
         <StackLayout BindingContext="{Binding Path=score}" x:Name="scoreTracker" Orientation="Horizontal">
