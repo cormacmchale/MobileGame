@@ -49,6 +49,9 @@ namespace test
         //used with gameObject Manipulation - instantiation and movement
         Random r = new Random();
         Random asteroidStartingPoint = new Random();
+        //used for managing keep player on screen on any platform
+        static double gridHeight;
+        static double gridWidth;
         #endregion
 
         public MainPage()
@@ -59,9 +62,12 @@ namespace test
         private void InitilizeGame()
         {
             UI();
-            startTimers();
             setUpEnvoirnment();
             playerScore();
+            //needs to be done before the timer is started
+            //not useful here
+            //getGridDimensions();
+            startTimers();
         }
 
         #region - Game setup and UI implementation
@@ -119,7 +125,7 @@ namespace test
                         //add buttons just in case
                         addbuttons();
                     }
-                        break;
+                    break;
                 case Device.UWP:
                     //add buttons for UWP users
                     addbuttons();
@@ -130,7 +136,14 @@ namespace test
                     break;
             }
         }
-
+        //hopefully this will help keep player on screen regardless of depolyment envoirenment
+        public void getGridDimensions()
+        {
+            //the *9 is to compensate for rows and columns
+            //does not work
+            gridHeight = Main.Height*9;
+            gridWidth = Main.Width*9;
+        }
         //method will create and add a game object that looks like an asteroid to a list
         //can just use the Image object as Game Objects
         //this method will have to be updated to maybe add images at a random location?
@@ -184,7 +197,7 @@ namespace test
             //start this timer again - this not being here may have been the reason that app was crashing out sometimes on Android
             if (Device.RuntimePlatform == Device.Android)
             {
-                sensorTimer.Stop();
+                sensorTimer.Start();
             }
         }
         //when the page goes out of scope in terms of UI
@@ -311,7 +324,7 @@ namespace test
             {
                 //every move increase difficulty
                 //add the game objects
-                addGameObject();
+                //addGameObject();
                 //move the gameObjects
                 MoveGameObjects();
             }
@@ -417,15 +430,16 @@ namespace test
             #region- keep player on screen too slow
             //too slow
             //keep player on screen
+            //could be an idea to use main.height here so all phones will work?
             //x position
             if (playerShip.TranslationX < -20)
-            { playerShip.TranslationX = 420;}
-            if (playerShip.TranslationX > 430)
+            { playerShip.TranslationX = (gridWidth+20);}
+            if (playerShip.TranslationX > (gridWidth+30))
             { playerShip.TranslationX = -10;}
             //y position
             if (playerShip.TranslationY < -70)
-            { playerShip.TranslationY = 760; }
-            if (playerShip.TranslationY > 770)
+            { playerShip.TranslationY = (gridHeight+70); }
+            if (playerShip.TranslationY > (gridHeight+80))
             { playerShip.TranslationY = -60; }
             #endregion
 
