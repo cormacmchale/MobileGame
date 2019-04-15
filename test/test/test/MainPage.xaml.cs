@@ -181,6 +181,11 @@ namespace test
             movePlayer.Start();
             //reset the score here
             score.Score = 0;
+            //start this timer again - this not being here may have been the reason that app was crashing out sometimes on Android
+            if (Device.RuntimePlatform == Device.Android)
+            {
+                sensorTimer.Stop();
+            }
         }
         //when the page goes out of scope in terms of UI
         protected override void OnDisappearing()
@@ -188,9 +193,7 @@ namespace test
             base.OnDisappearing();
             //stop this timer as no need to continue to keep goin in the BackGround
             movePlayer.Stop();
-            //stop sensor if active
-
-            //start this timer again - this not being here may have been the reason that app was crashing out sometimes on Android
+            //stop sensor if active - this not being here may have been the reason that app was crashing out sometimes on Android
             if (Device.RuntimePlatform == Device.Android)
             {
                 sensorTimer.Stop();
