@@ -64,9 +64,6 @@ namespace test
             UI();
             setUpEnvoirnment();
             playerScore();
-            //needs to be done before the timer is started
-            //not useful here
-            //getGridDimensions();
             startTimers();
         }
 
@@ -141,8 +138,8 @@ namespace test
         {
             //the *9 is to compensate for rows and columns
             //does not work
-            gridHeight = Main.Height*9;
-            gridWidth = Main.Width*9;
+            gridHeight = Main.Height;
+            gridWidth = Main.Width;
         }
         //method will create and add a game object that looks like an asteroid to a list
         //can just use the Image object as Game Objects
@@ -324,7 +321,7 @@ namespace test
             {
                 //every move increase difficulty
                 //add the game objects
-                //addGameObject();
+                addGameObject();
                 //move the gameObjects
                 MoveGameObjects();
             }
@@ -372,17 +369,12 @@ namespace test
                 {
                     foreach (var GameObject in gameObjects)
                     {
+                        //distance of a line for collision
                         distance = Math.Sqrt(((GameObject.TranslationX - playerShip.TranslationX) * (GameObject.TranslationX - playerShip.TranslationX))
                         + ((GameObject.TranslationY - playerShip.TranslationY) * (GameObject.TranslationY - playerShip.TranslationY)));
-                        // Debug.WriteLine("Asteroid X="+asteroid.TranslationX+" "+"Player X="+playerShip.TranslationX);
-                        // Debug.WriteLine("Asteroid Y=" + asteroid.TranslationY + " " + "Player Y=" + playerShip.TranslationY);
-                        //Debug.WriteLine(distance);
-                        //Debug.WriteLine(GameObject.X + " " + playerShip.X);
                         if (distance <= 40)
                         {
-                            //Debug.WriteLine(distance);
-                            //Debug.WriteLine("Collision");
-                            //stop both timers - android issue maybe? here for error handling
+                            //stop both timers - here for error handling
                             //after testing this setup runs optimally
                             resetGame();
                             translateTimer.Stop();
@@ -393,9 +385,11 @@ namespace test
                     }
                 }
                 //error handling for android??
+                //changePage called here again will cause the score board to be pushed twice to the stack! 
+                //Timer interaction also has strange results in here- only needed to keep the android build running correctly, Java issue maybe?
                 catch
                 {
-                    //stop both timers - android issue maybe?
+                    //android issue?
                     //translateTimer.Stop();
                     //collisionTimer.Stop();
                     //pop new page onto the stack
@@ -417,18 +411,15 @@ namespace test
             VectorReading n = CrossDeviceSensors.Current.Accelerometer.LastReading;
             //changes movement based on orientation of the phone
             tiltMoveShip(n.X, n.Y);
+            //call here to have access to bounds of grid every move
+            getGridDimensions();
         }
         //gets the value from the reading and alters movement accordingly
         private void tiltMoveShip(double X, double Y)
         {
-            //Debug.WriteLine(Y);
             //tidied up - for Up Y has to be a bit smaller to feel more intuitive
             //if user tilts extreme than that stops moevment in the opposite direction
-            //Debug.WriteLine(playerShip.TranslationX);
-            //Debug.WriteLine(playerShip.TranslationY);
-
-            #region- keep player on screen too slow
-            //too slow
+            #region- keep player on screen
             //keep player on screen
             //could be an idea to use main.height here so all phones will work?
             //x position
@@ -438,8 +429,8 @@ namespace test
             { playerShip.TranslationX = -10;}
             //y position
             if (playerShip.TranslationY < -70)
-            { playerShip.TranslationY = (gridHeight+70); }
-            if (playerShip.TranslationY > (gridHeight+80))
+            { playerShip.TranslationY = (gridHeight+65); }
+            if (playerShip.TranslationY > (gridHeight+72))
             { playerShip.TranslationY = -60; }
             #endregion
 
@@ -548,7 +539,6 @@ namespace test
             movementX = -2;
             movementY = +2;
         }
-
         private void UPRIGHTMOVE(object sender, EventArgs e)
         {
             //playerShip.Rotation = 15;

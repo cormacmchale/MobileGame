@@ -44,7 +44,7 @@ namespace test
             highScore.RemoveAt(highScore.Count - 1);
             //save scores to local storage
             fileReaderHighScores.SaveHighScoreList(highScore);
-            //ListView scores = new ListView();
+            //Databind result to UI for User;
             scoreBoard.ItemsSource = highScore;
         }
     }

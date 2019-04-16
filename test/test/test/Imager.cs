@@ -8,8 +8,7 @@ namespace test
 {
     class Imager
     {
-        //function to save image to a variable to use
-        //function that adds an image to an object
+        //function that adds an image to an image object
         public ImageSource AddImage(string imageName)
         {
             var assembly = typeof(MainPage);

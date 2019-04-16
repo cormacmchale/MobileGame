@@ -26,7 +26,7 @@ namespace test
             }
             catch
             {
-                //read the highScores.txt
+                //read the default highScores.txt first time the app is loaded
                 var assembly = IntrospectionExtensions.GetTypeInfo(typeof(HighScoreReplay)).Assembly;
                 Stream stream = assembly.GetManifestResourceStream("test.HighScores.highScores.txt");
                 using (var reader = new StreamReader(stream))
@@ -41,6 +41,7 @@ namespace test
         //add method for saving data also
         public static void SaveHighScoreList(List<scorePosition> saveList)
         {
+            //save to the local for the next time the player plays
             string path = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
             string filename = Path.Combine(path, "highScores.txt");
             using (var writer = new StreamWriter(filename, false))
